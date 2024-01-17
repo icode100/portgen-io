@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* login and register component */
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+.login{
+    margin-left: 100px;
+    background-color: #f1f5fc01;
+    justify-content: center;
+    backdrop-filter: blur(100px);
+    height: 500px;
+    width: 400px;
+    border-radius: 30px;
+    
+    
+}
+.logo{
+    position: relative;
+    margin-top: -20rem;
+    margin-left: 2rem;
+}
+.register{
+    margin-left: 100px;
+    background-color: #f1f5fc00;
+    backdrop-filter: blur(100px);
+    /* -webkit-backdrop-filter: blur(10px); */
+    justify-content: center;
+    height: 600px;
+    width: 400px;
+    border-radius: 30px;
+}
+
+.login-header-nav,.register-header-nav{
+    align-items: center;
+    position: relative;
+    margin-left: 20px;
+}
+.login-img{
+    position: relative;
+    width:100px;
+    height: 160px;
+    margin-top: 50px;
+    margin-left: 150px;
+}
+.register-img{
+    position: relative;
+    width:160px;
+    height: 100px;
+    margin-top: 50px;
+    margin-left: 120px;
+
+}
+
+.login-register-btn, .login-login-btn,.register-register-btn, .register-login-btn{
+    width: 100px;
+    height: 40px;
+    border-radius: 30px;
+    position: relative;
+    background-color: #7DB9FF;
+    color: white;
+    border: none;
+}
+
+.login-register-btn,.register-register-btn{
+    margin-top: 30px;
+}
+.login-login-btn,.register-login-btn{
+    margin-top: 30px;
+    margin-left: 150px;
+}
+
+.login-login-btn,.register-register-btn{
+    background-color: #7dbaff4b;
+}
+
+.login-form,.register-form{
+    margin-top:30px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.login-form-email,.login-form-password,.login-form-submit,.register-form-email,.register-form-password,.register-form-submit,.register-form-username{
+    height: 30px;
+    width: 300px;
+    border: none;
+    border-radius: 30px;
+    margin-top: 20px;
+    
+
+}
+
+.login-form-email,.login-form-password,.register-form-username,.register-form-email,.register-form-password{
+    background-color: #44a5ff95;
+    padding-left: 30px;
+}
+
+.login-form-submit,.register-form-submit{
+    background-color: #FFAAE2;
+}
+
+.register-footer{
+    position: relative;
+    margin-left: 3.5rem;
+    margin-top: 2rem;
+}
+
+.register-footer a{
+    color: #44A5FF;
+}
+
+.register-login-page{
+    background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.register-login-component{
+    background: conic-gradient(
+    from 180deg at 50% 50%,
+    rgb(212.29, 237.06, 255) 2.31deg,
+    rgb(179.14, 223.14, 255) 21.63deg,
+    rgb(198.69, 227.97, 255) 63.1deg,
+    rgb(227.59, 243.49, 255) 88.08deg,
+    rgb(225.04, 244.21, 255) 184.47deg,
+    rgb(219.09, 241.36, 255) 244.77deg,
+    rgb(221.64, 242.99, 255) 312.23deg,
+    rgb(229.29, 242.66, 255) 345.37deg
+    );
+    background-color: rgba(255, 255, 255, 1);
+    height: 46rem;
+    position: relative;
+    width: 100rem;
+}
+
+.register-login-component .vector-15 {
+    height: 111px;
+    left: 23.5rem;
+    position: relative;
+    top: 27rem;
+    width: 502px;
+}
+.register-login-component .vector-16 {
+    height: 400px;
+    left: 30rem;
+    position: relative;
+    top: -5rem;
+    width: 144px;
+}
+
+.register-login-component .vector-8 {
+    height: 500px;
+    left: -65.5rem;
+    position: relative;
+    top: 7rem;
+    width: 100px;
+}
+
+.register-login-frame{
+    position: absolute;
+    left: 35%;
+    top: 5vh;
+}
+
+/* settings Logo */
+.rotate {
+    animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
