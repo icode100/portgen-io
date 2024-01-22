@@ -60,6 +60,13 @@ export default function InfoComponent(){
         SkillScore4:"",
         Skill5:"",
         SkillScore5:"",
+        YearsExp:"",
+        Comp1:"",
+        WorkDesc1:"",
+        Comp2:"",
+        WorkDesc2:"",
+        Comp3:"",
+        WorkDesc3:"",
     })
 
     function HandleChange(event){
@@ -330,11 +337,31 @@ export default function InfoComponent(){
                     </AccordionDetails>
                 </Accordion>
                 {/* Experience */}
+                <hr />
                 <Accordion>
                     <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1-content"id="panel1-header">
-                        
+                        <div className="accordion-summary">
+                            Experience
+                        </div>
                     </AccordionSummary>
+                    <AccordionDetails>
+                        <div className="accordion-details">
+                            <Stack>
+                                <TextField variant="filled" multilined="true" label="Years of experience" type="number" placeholder="Enter the number of years you have worked" name="YearsExp"/>
+                                <hr />
+                                <TextField variant="filled" multiline label="Company 1" placeholder="Enter the name of Company" name="Comp1"/>
+                                <TextField variant="filled" multiline label="Description" placeholder="Describe your Work" name="WorkDesc1" maxRows={5}/>
+                                <hr />
+                                <TextField variant="filled" multiline label="Company 2" placeholder="Enter the name of Company" name="Comp2"/>
+                                <TextField variant="filled" multiline label="Description" placeholder="Describe your Work" name="WorkDesc2" maxRows={5}/>
+                                <hr />
+                                <TextField variant="filled" multiline label="Company 3" placeholder="Enter the name of Company" name="Comp3"/>
+                                <TextField variant="filled" multiline label="Description" placeholder="Describe your Work" name="WorkDesc3" maxRows={5}/>
+                            </Stack>
+                        </div>
+                    </AccordionDetails>
                 </Accordion>
+                
             </form>
             
         </div>
