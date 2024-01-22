@@ -171,11 +171,25 @@ body{
 
 
 /* info component */
-.info-component .accordion-summary{
+.info-component .accordion-summary, .slider-label{
     font-family: 'Roboto Slab', serif;
 }
 
+.info-component{
+    position: relative;
+    width: 50rem;
+    left: 25rem;
+    top:-20rem
+}
+.MuiAccordion-root .MuiAccordion-region{
+    background-color: #defffb4a;
+    backdrop-filter: blur(10px);
+}
 
+.MuiAccordion-root .MuiAccordionSummary-root{
+    background: linear-gradient(180deg, rgba(195, 236, 254, 0.497) 0%, rgba(221, 237, 255, 0.475) 100%);
+    backdrop-filter: blur(10px);
+}
 
 
 /* info page */
@@ -321,6 +335,9 @@ body{
     width: 367px;
 }
 
-    
+.info-page-component{
+    position: relative;
+    top: 50rem;
+}
 
     

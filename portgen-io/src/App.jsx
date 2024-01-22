@@ -8,9 +8,9 @@ function App() {
     <>
       {/* <Login/> */}
       {/* <WelcomePage/> */}
-      {/* <SettingsLogo/> */}
-      {/* <InfoPage/> */}
-      <InfoComponent/>
+
+      <InfoPage/>
+      {/* <InfoComponent/> */}
     </>
   )
 }

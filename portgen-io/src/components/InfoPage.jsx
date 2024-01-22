@@ -8,6 +8,7 @@ import vector_37 from "../assets/vector-37.svg"
 import vector_38 from "../assets/vector-38.svg"
 import vector_39 from "../assets/vector-39.svg"
 import logo from "../assets/PortGenLogo.png"
+import InfoComponent from "./InfoComponent";
 export default function InfoPage(){
     return (
         <div className="info-page">
@@ -22,6 +23,9 @@ export default function InfoPage(){
                     <img className="vector-6" alt="Vector" src={vector_33} />
                     <div className="header" />
                     <p className="text-wrapper">Enter your info to be displayed on your protfolio</p>
+                    <div className="info-page-component">
+                        <InfoComponent/>
+                    </div>
                     <div className="copy-right">
                         <div className="overlap-group">
                             <p className="div">Copyright © 2024 PortgenIo.Inc. All rights reserved.</p>
