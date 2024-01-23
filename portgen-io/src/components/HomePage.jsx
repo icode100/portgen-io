@@ -18,7 +18,6 @@ export default function HomePage () {
             <div className="footer-HomePage">
                 <img id ="hi" src={hi} alt="" />
                 <img id ="rec" src={rec} alt="back" /> 
-                
             </div>
         </div>
     </div>
