@@ -24,10 +24,9 @@ function App() {
   ]
   return (
     <>
-     {/* <HomePage/> */}
+     <HomePage/>
      {/* <SettingPage/> */}
-     {/* <p>hi helo</p> */}
-     <MainPage data={data}/>
+     {/* <MainPage data={data}/> */}
     </>
   )
 }
