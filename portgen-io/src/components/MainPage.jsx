@@ -1,5 +1,4 @@
 import React from 'react'
-import Profile from "./MainPageProfile.jsx";
 import Logo from "../assets/PortGenLogo.png";
 import BackGround from "../assets/Vector 17.svg";
 import PortfolioCat from "./MainPgPortCatSet.jsx";
@@ -23,12 +22,12 @@ export default function MainPage(props) {
     <div id="mainpage">
 
       <div id ="mainpage-back">
-         <img  src={BackGround} alt="" />
+         <img  src={BackGround} alt=""/>
       </div>
 
       <div id = "mainPageNavBar"> 
-        <img src={Logo} alt="" />
-        <Profile/>
+        <Link to = '/'><img src={Logo} alt="" /></Link>
+        {/* <Profile/> */}
       </div>
 
       {/* <div className="propsblueMainPage">
