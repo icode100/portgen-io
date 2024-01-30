@@ -10,7 +10,7 @@ export default function MainPgPortCatSet(props) {
     }
     // console.log(props.images);
     return (
-        <div class = "MainPgPortCatSet">
+        <div className = "MainPgPortCatSet">
             <p>{props.title}</p>
             <div>
                 {components}

@@ -44,6 +44,7 @@ function App() {
           <Route path='/main' element={<MainPage data={data}/>} />
           <Route path='/info' element={<InfoPage/>} />
           <Route path='/settings' element={<SettingPage/>} />
+          <Route path='/logout' element={<HomePage/>} />
         </Routes>
       </BrowserRouter>
     </>

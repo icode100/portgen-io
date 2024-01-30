@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Name from "./SettingName.jsx";
 import Logo from "./SettingsLogo.jsx";
 import mainImage from "../assets/image 1MainProfile.png";
+import SettingsTabPannel from './SettingsTabPannel.jsx';
 import "../style.css"
 
 export default function SettingPage() {
@@ -32,17 +33,7 @@ export default function SettingPage() {
         </div>
         <div class ="setting-details-whole">
             <div class ="setting-details">
-                <div >
-                    <label htmlFor="changeUsername">Change Username</label>
-                    <input type="text" id="changeUsername" name="username" onChange={handleChange} />
-                </div>
-                <div>
-                    <label htmlFor="changeEmail">Change Email</label>
-                    <input type="text" id="changeEmail" name="email" onChange={handleChange}/>
-                </div>
-            </div>
-            <div class="setting-avtar">
-                <p>Choose your icon</p>
+                <SettingsTabPannel/>
             </div>
         </div>
     </div>

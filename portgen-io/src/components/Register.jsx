@@ -10,6 +10,7 @@ export default function Register(){
     const [registerState,setregisterState] = React.useState({
         userName:"",
         Email:"",
+        RecoveryPin:"",
         Password:"",
         cnfPass:""
     })
@@ -38,6 +39,7 @@ export default function Register(){
             <input type="email" name="Email" className="register-form-email" placeholder = {`Enter your Email ✉️`} onChange={HandleChange}/>
             <input type="password" name="Password"  className="register-form-password" placeholder={`Enter Your Password 🔑`} onChange={HandleChange}/>
             <input type="password" name="cnfPass"  className="register-form-password" placeholder= {`Reneter Your Password 🔑`} onChange={HandleChange}/>
+            <input type="password" name="RecoveryPin"  className="register-form-password" placeholder= {`Setup a recovery pin 🛂`} onChange={HandleChange}/>
             <button type="submit" className="register-form-submit">Register</button>
         </form>
 
