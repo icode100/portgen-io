@@ -1,40 +1,25 @@
 import React from "react";
 import "../style.css";
-import vector_33 from "../assets/vector-33.svg"
-import vector_34 from "../assets/vector-34.svg"
-import vector_35 from "../assets/vector-35.svg"
-import vector_36 from "../assets/vector-36.svg"
-import vector_37 from "../assets/vector-37.svg"
-import vector_38 from "../assets/vector-38.svg"
-import vector_39 from "../assets/vector-39.svg"
-import logo from "../assets/PortGenLogo.png"
+import logo from "../assets/PortGenLogo.png";
 import InfoComponent from "./InfoComponent";
+import NavIcon from "./NavIcon";
 import { Link } from "react-router-dom";
-export default function InfoPage(){
-    return (
-        <div className="info-page">
-            <div className="overlap-wrapper">
-                <div className="overlap">
-                    <img className="vector" alt="Vector" src={vector_35} />
-                    <img className="img" alt="Vector" src={vector_38} />
-                    <img className="vector-2" alt="Vector" src={vector_36} />
-                    <img className="vector-3" alt="Vector" src={vector_39} />
-                    <img className="vector-4" alt="Vector" src={vector_34} />
-                    <img className="vector-5" alt="Vector" src={vector_37} />
-                    <img className="vector-6" alt="Vector" src={vector_33} />
-                    <div className="header" />
-                    <p className="text-wrapper">Enter your info to be displayed on your protfolio</p>
-                    <div className="info-page-component">
-                        <InfoComponent/>
-                    </div>
-                    <div className="copy-right">
-                        <div className="overlap-group">
-                            <p className="div">Copyright © 2024 PortgenIo.Inc. All rights reserved.</p>
-                        </div>
-                    </div>
-                    <Link to="/"><img className="portgen-io" alt="Portgen io" src={logo} /></Link>
-                </div>
-            </div>
-        </div>
-    );
-};
+import profile from "../assets/image_extra1.png";
+
+export default function InfoPage() {
+  return (
+    <div className="info-page">
+      <nav className="info-page-nav">
+        <Link to = '/'><img className="info-page-logo" src={logo} alt="" /></Link>
+        <NavIcon className="info-page-profile"img={profile}/>
+      </nav>
+      <h1 className="info-page-title">Enter your info to be displayed on your protfolio</h1>
+      <div className="info-page-body">
+        <InfoComponent/>
+      </div>
+      <footer className="info-page-footer">
+          <p>Copyright © 2024 PortgenIo.Inc. All rights reserved.</p>
+      </footer>
+    </div>
+  );
+}

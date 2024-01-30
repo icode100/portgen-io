@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ribeye+Marrow&family=Roboto&family=Roboto+Slab&display=swap');
 
 /* login and register component */
 body{
@@ -193,156 +194,46 @@ body{
 
 
 /* info page */
-.info-page {
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+.info-page{
+    background: url(./assets/info-page.png);
+    background-repeat: no-repeat;
     width: 100%;
-}
-
-.info-page .overlap-wrapper {
-    background-color: #ffffff;
     height: 2012px;
-    overflow: hidden;
-    width: 1572px;
+    display: flex;
+    flex-direction: column;
 }
-
-.info-page .overlap {
-    height: 2012px;
+.info-page-nav{
+    display: flex;
+    background-color: #FFF8F8;
+    justify-content: space-between;
+    padding: 1rem;
+    box-shadow: 0 9px 4px 0 rgba(0, 0, 0, 0.25);
+}
+.info-page-body{
+    display: flex;
     position: relative;
-    width: 1574px;
+    top: 30rem;
+    justify-content:flex-start;
+    align-items: center;
 }
-
-.info-page .vector {
-    height: 1780px;
-    left: 113px;
-    position: absolute;
-    top: 142px;
-    width: 1288px;
-}
-
-.info-page .img {
-    height: 1760px;
-    left: 275px;
-    position: absolute;
-    top: 0;
-    width: 1288px;
-}
-
-.info-page .vector-2 {
-    height: 1563px;
-    left: 0;
-    position: absolute;
-    top: 423px;
-    width: 1106px;
-}
-
-.info-page .vector-3 {
-    height: 1223px;
-    left: 0;
-    position: absolute;
-    top: 744px;
-    width: 843px;
-}
-
-.info-page .vector-4 {
-    height: 1723px;
-    left: 134px;
-    position: absolute;
-    top: 20px;
-    width: 1438px;
-}
-
-.info-page .vector-5 {
-    height: 1518px;
-    left: 0;
-    position: absolute;
-    top: 463px;
-    width: 1347px;
-}
-
-.info-page .vector-6 {
-    height: 1520px;
-    left: 0;
-    position: absolute;
-    top: 310px;
-    width: 1572px;
-}
-
-.info-page .header {
-    background-color: #fffafa;
-    border: 1px solid;
-    border-color: #fff9f9;
-    box-shadow: 0px 9px 4px #00000040;
-    height: 157px;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 1572px;
-}
-
-.info-page .text-wrapper {
-    color: #000000;
-    font-family: 'Roboto Slab', serif;
-    font-size: 45px;
-    font-weight: 400;
-    height: 50px;
-    left: 36px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 234px;
-    white-space: nowrap;
-    width: 1188px;
-}
-
-.info-page .copy-right {
-    height: 130px;
-    left: 0;
-    position: absolute;
-    top: 1882px;
-    width: 1574px;
-}
-
-.info-page .overlap-group {
-    background-color: #a4eaf9;
-    height: 130px;
+.info-page-title{
+    font-family:'Roboto Slab', serif;
     position: relative;
-    width: 1572px;
+    top: 5vh;
+    margin-left: 5vw;
 }
-
-.info-page .div {
-    color: #000000;
-    font-family: 'Roboto Slab', serif;
-    font-size: 36px;
-    font-weight: 400;
-    height: 99px;
-    left: 334px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 31px;
-    width: 1067px;
-}
-
-.info-page .portgen-io {
-    height: 58px;
-    left: 34px;
-    mix-blend-mode: hard-light;
-    position: absolute;
-    top: 63px;
-    width: 367px;
-}
-
-.info-page-component{
+.info-page-footer{
+    background-color: #A4EAF9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family:'Roboto Slab', serif;
+    font-size: large;
     position: relative;
-    top: 50rem;
-}
-
-    body{
-    margin:0px;
-    padding:0px;
+    top: 5vh;
+    width: 100%;
+    height: 80px;
+    margin-top: 1300px;
 }
 
 /* Home Page css */
@@ -467,24 +358,12 @@ body{
 }
 
 .setting-details{
-    display:flex;
-    flex-direction: column;
+    position: relative;
+    top: -46vh;
+    width: 40vw;
+    height:7vh;
     padding:3%;
-}
-
-.setting-details div{
-    display:flex;
-    justify-content: space-between;
-    margin:.5%;
-}
-
-.setting-details-whole{
-    display: flex;
-    justify-content: space-between;
-}
-
-.setting-avtar{
-    padding-right:5%;
+    left:60vw;
 }
 
 

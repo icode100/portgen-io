@@ -9,7 +9,7 @@ export default function MainPgPortCatSet(props) {
         components.push(<Portfolio key={i} img={images[i]} />);
     }
     return (
-        <div class = "MainPgPortCatSet">
+        <div className = "MainPgPortCatSet">
             <p>{props.title}</p>
             <div>
                 {components}
