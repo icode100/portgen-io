@@ -370,12 +370,21 @@ body{
 }
 
 #register{
+    font-family: 'Roboto Slab', serif;
     position: relative;
     top:40%;
     right:5%;
+    color:#000000;
+}
+#register a{
+    text-decoration: none;
+}
+#register:hover{
+    color: #F96EB9
 }
 
 #headline-body-homePage{
+    font-family: 'Roboto Slab', serif;
     text-align: center;
     padding:3%;
     font-size: 1.8rem;

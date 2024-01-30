@@ -4,6 +4,8 @@ import "../style.css"
 import EmailIcon from '@mui/icons-material/Email';
 import PasswordIcon from '@mui/icons-material/Password';
 import PersonIcon from '@mui/icons-material/Person';
+import {redirect,Link,useNavigate} from 'react-router-dom'
+
 export default function Register(){
     const [registerState,setregisterState] = React.useState({
         userName:"",
@@ -11,6 +13,7 @@ export default function Register(){
         Password:"",
         cnfPass:""
     })
+    const navigate = useNavigate()
 
     function HandleChange(event){
         setregisterState({
@@ -18,12 +21,14 @@ export default function Register(){
             [event.target.name]: event.target.value
         })
     }
-
+    const handleNavigation = ()=>{
+        navigate('/reglog/login')
+    }
     return(
     <div className="register">
         <div className="register-header-nav">
-            <button className="register-register-btn" disabled="true" >Register</button>
-            <button className="register-login-btn">Login</button>
+            <button className="register-register-btn" disabled={true} >Register</button>
+            <button className="register-login-btn" onClick={handleNavigation}>Login</button>
         </div>
 
         <img src={register} className="register-img" alt="register"/>
@@ -37,7 +42,7 @@ export default function Register(){
         </form>
 
         <div className="register-footer">
-            Already Have an account? <a href="#">Login</a> here
+            Already Have an account? <Link to ="/reglog/login">Login</Link> here
         </div>
     </div>
     )

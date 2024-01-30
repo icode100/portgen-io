@@ -9,6 +9,7 @@ import vector_38 from "../assets/vector-38.svg"
 import vector_39 from "../assets/vector-39.svg"
 import logo from "../assets/PortGenLogo.png"
 import InfoComponent from "./InfoComponent";
+import { Link } from "react-router-dom";
 export default function InfoPage(){
     return (
         <div className="info-page">
@@ -31,7 +32,7 @@ export default function InfoPage(){
                             <p className="div">Copyright © 2024 PortgenIo.Inc. All rights reserved.</p>
                         </div>
                     </div>
-                    <img className="portgen-io" alt="Portgen io" src={logo} />
+                    <Link to="/"><img className="portgen-io" alt="Portgen io" src={logo} /></Link>
                 </div>
             </div>
         </div>
