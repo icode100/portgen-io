@@ -1,4 +1,346 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&display=swap');
+
+/* login and register component */
 body{
+    font-family: 'Roboto', sans-serif;
+}
+
+.login{
+    margin-left: 100px;
+    background-color: #f1f5fc01;
+    justify-content: center;
+    backdrop-filter: blur(100px);
+    height: 500px;
+    width: 400px;
+    border-radius: 30px;
+    
+    
+}
+.logo{
+    position: relative;
+    margin-top: -20rem;
+    margin-left: 2rem;
+}
+.register{
+    margin-left: 100px;
+    background-color: #f1f5fc00;
+    backdrop-filter: blur(100px);
+    /* -webkit-backdrop-filter: blur(10px); */
+    justify-content: center;
+    height: 600px;
+    width: 400px;
+    border-radius: 30px;
+}
+
+.login-header-nav,.register-header-nav{
+    align-items: center;
+    position: relative;
+    margin-left: 20px;
+}
+.login-img{
+    position: relative;
+    width:100px;
+    height: 160px;
+    margin-top: 50px;
+    margin-left: 150px;
+}
+.register-img{
+    position: relative;
+    width:160px;
+    height: 100px;
+    margin-top: 50px;
+    margin-left: 120px;
+
+}
+
+.login-register-btn, .login-login-btn,.register-register-btn, .register-login-btn{
+    width: 100px;
+    height: 40px;
+    border-radius: 30px;
+    position: relative;
+    background-color: #7DB9FF;
+    color: white;
+    border: none;
+}
+
+.login-register-btn,.register-register-btn{
+    margin-top: 30px;
+}
+.login-login-btn,.register-login-btn{
+    margin-top: 30px;
+    margin-left: 150px;
+}
+
+.login-login-btn,.register-register-btn{
+    background-color: #7dbaff4b;
+}
+
+.login-form,.register-form{
+    margin-top:30px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.login-form-email,.login-form-password,.login-form-submit,.register-form-email,.register-form-password,.register-form-submit,.register-form-username{
+    height: 30px;
+    width: 300px;
+    border: none;
+    border-radius: 30px;
+    margin-top: 20px;
+    
+
+}
+
+.login-form-email,.login-form-password,.register-form-username,.register-form-email,.register-form-password{
+    background-color: #44a5ff95;
+    padding-left: 30px;
+}
+
+.login-form-submit,.register-form-submit{
+    background-color: #FFAAE2;
+}
+
+.register-footer{
+    position: relative;
+    margin-left: 3.5rem;
+    margin-top: 2rem;
+}
+
+.register-footer a{
+    color: #44A5FF;
+}
+
+.register-login-page{
+    background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.register-login-component{
+    background: conic-gradient(
+    from 180deg at 50% 50%,
+    rgb(212.29, 237.06, 255) 2.31deg,
+    rgb(179.14, 223.14, 255) 21.63deg,
+    rgb(198.69, 227.97, 255) 63.1deg,
+    rgb(227.59, 243.49, 255) 88.08deg,
+    rgb(225.04, 244.21, 255) 184.47deg,
+    rgb(219.09, 241.36, 255) 244.77deg,
+    rgb(221.64, 242.99, 255) 312.23deg,
+    rgb(229.29, 242.66, 255) 345.37deg
+    );
+    background-color: rgba(255, 255, 255, 1);
+    height: 46rem;
+    position: relative;
+    width: 100rem;
+}
+
+.register-login-component .vector-15 {
+    height: 111px;
+    left: 23.5rem;
+    position: relative;
+    top: 27rem;
+    width: 502px;
+}
+.register-login-component .vector-16 {
+    height: 400px;
+    left: 30rem;
+    position: relative;
+    top: -5rem;
+    width: 144px;
+}
+
+.register-login-component .vector-8 {
+    height: 500px;
+    left: -65.5rem;
+    position: relative;
+    top: 7rem;
+    width: 100px;
+}
+
+.register-login-frame{
+    position: absolute;
+    left: 35%;
+    top: 5vh;
+}
+
+
+/* info component */
+.info-component .accordion-summary, .slider-label{
+    font-family: 'Roboto Slab', serif;
+}
+
+.info-component{
+    position: relative;
+    width: 50rem;
+    left: 25rem;
+    top:-20rem
+}
+.MuiAccordion-root .MuiAccordion-region{
+    background-color: #defffb4a;
+    backdrop-filter: blur(10px);
+}
+
+.MuiAccordion-root .MuiAccordionSummary-root{
+    background: linear-gradient(180deg, rgba(195, 236, 254, 0.497) 0%, rgba(221, 237, 255, 0.475) 100%);
+    backdrop-filter: blur(10px);
+}
+
+
+/* info page */
+.info-page {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.info-page .overlap-wrapper {
+    background-color: #ffffff;
+    height: 2012px;
+    overflow: hidden;
+    width: 1572px;
+}
+
+.info-page .overlap {
+    height: 2012px;
+    position: relative;
+    width: 1574px;
+}
+
+.info-page .vector {
+    height: 1780px;
+    left: 113px;
+    position: absolute;
+    top: 142px;
+    width: 1288px;
+}
+
+.info-page .img {
+    height: 1760px;
+    left: 275px;
+    position: absolute;
+    top: 0;
+    width: 1288px;
+}
+
+.info-page .vector-2 {
+    height: 1563px;
+    left: 0;
+    position: absolute;
+    top: 423px;
+    width: 1106px;
+}
+
+.info-page .vector-3 {
+    height: 1223px;
+    left: 0;
+    position: absolute;
+    top: 744px;
+    width: 843px;
+}
+
+.info-page .vector-4 {
+    height: 1723px;
+    left: 134px;
+    position: absolute;
+    top: 20px;
+    width: 1438px;
+}
+
+.info-page .vector-5 {
+    height: 1518px;
+    left: 0;
+    position: absolute;
+    top: 463px;
+    width: 1347px;
+}
+
+.info-page .vector-6 {
+    height: 1520px;
+    left: 0;
+    position: absolute;
+    top: 310px;
+    width: 1572px;
+}
+
+.info-page .header {
+    background-color: #fffafa;
+    border: 1px solid;
+    border-color: #fff9f9;
+    box-shadow: 0px 9px 4px #00000040;
+    height: 157px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 1572px;
+}
+
+.info-page .text-wrapper {
+    color: #000000;
+    font-family: 'Roboto Slab', serif;
+    font-size: 45px;
+    font-weight: 400;
+    height: 50px;
+    left: 36px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 234px;
+    white-space: nowrap;
+    width: 1188px;
+}
+
+.info-page .copy-right {
+    height: 130px;
+    left: 0;
+    position: absolute;
+    top: 1882px;
+    width: 1574px;
+}
+
+.info-page .overlap-group {
+    background-color: #a4eaf9;
+    height: 130px;
+    position: relative;
+    width: 1572px;
+}
+
+.info-page .div {
+    color: #000000;
+    font-family: 'Roboto Slab', serif;
+    font-size: 36px;
+    font-weight: 400;
+    height: 99px;
+    left: 334px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 31px;
+    width: 1067px;
+}
+
+.info-page .portgen-io {
+    height: 58px;
+    left: 34px;
+    mix-blend-mode: hard-light;
+    position: absolute;
+    top: 63px;
+    width: 367px;
+}
+
+.info-page-component{
+    position: relative;
+    top: 50rem;
+}
+
+    body{
     margin:0px;
     padding:0px;
 }
@@ -239,9 +581,9 @@ body{
     z-index: -1;
 }
 
-.propsblueMainPage{
-    /* padding-top: 30%; */
-}
+/* .propsblueMainPage{
+    padding-top: 30%;
+} */
 
 
 
