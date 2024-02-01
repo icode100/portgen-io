@@ -1,33 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import SettingPage from './components/SettingPage.jsx';
+import HomePage from './components/HomePage.jsx';
+import MainPage from './components/MainPage.jsx';
+import pic1 from "./assets/portfilo1.png";
+import pic2 from "./assets/potfolio2.png";
+import pic3 from "./assets/portfolio3.png";
+import RegisterLogin from './components/RegisterLogin.jsx'
+import Login from './components/Login.jsx'
+import Register from './components/Register.jsx'
+import InfoPage from './components/InfoPage.jsx'
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes
+  
+} from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  let data = [
+    {
+      title:"Software eng",
+      images:[pic1, pic2, pic3]
+    },
+    {
+      title:"Fasion designer",
+      images:[pic1, pic2, pic3]
+    },
+    {
+      title:"Fasion designer",
+      images:[pic1, pic2, pic3]
+    }
+  ]
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<HomePage/>} />
+          <Route path='/reglog' element={<RegisterLogin/>}>
+            <Route path='login' element={<Login/>}/>
+            <Route path='register' element={<Register/>}/>
+          </Route>
+          <Route path='/main' element={<MainPage data={data}/>} />
+          <Route path='/info' element={<InfoPage/>} />
+          <Route path='/settings' element={<SettingPage/>} />
+          <Route path='/logout' element={<HomePage/>} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
