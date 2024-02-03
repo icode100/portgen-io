@@ -1,0 +1,484 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ribeye+Marrow&family=Roboto&family=Roboto+Slab&display=swap');
+
+/* login and register component */
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+.login{
+    margin-left: 100px;
+    background-color: #f1f5fc01;
+    justify-content: center;
+    backdrop-filter: blur(100px);
+    height: 500px;
+    width: 400px;
+    border-radius: 30px;
+    
+    
+}
+.logo{
+    position: relative;
+    margin-top: -20rem;
+    margin-left: 2rem;
+}
+.register{
+    margin-left: 100px;
+    background-color: #f1f5fc00;
+    backdrop-filter: blur(100px);
+    /* -webkit-backdrop-filter: blur(10px); */
+    justify-content: center;
+    height: 600px;
+    width: 400px;
+    border-radius: 30px;
+}
+
+.login-header-nav,.register-header-nav{
+    align-items: center;
+    position: relative;
+    margin-left: 20px;
+}
+.login-img{
+    position: relative;
+    width:100px;
+    height: 160px;
+    margin-top: 50px;
+    margin-left: 150px;
+}
+.register-img{
+    position: relative;
+    width:160px;
+    height: 100px;
+    margin-top: 50px;
+    margin-left: 120px;
+
+}
+
+.login-register-btn, .login-login-btn,.register-register-btn, .register-login-btn{
+    width: 100px;
+    height: 40px;
+    border-radius: 30px;
+    position: relative;
+    background-color: #7DB9FF;
+    color: white;
+    border: none;
+}
+
+.login-register-btn,.register-register-btn{
+    margin-top: 30px;
+}
+.login-login-btn,.register-login-btn{
+    margin-top: 30px;
+    margin-left: 150px;
+}
+
+.login-login-btn,.register-register-btn{
+    background-color: #7dbaff4b;
+}
+
+.login-form,.register-form{
+    margin-top:30px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.login-form-email,.login-form-password,.login-form-submit,.register-form-email,.register-form-password,.register-form-submit,.register-form-username{
+    height: 30px;
+    width: 300px;
+    border: none;
+    border-radius: 30px;
+    margin-top: 20px;
+    
+
+}
+
+.login-form-email,.login-form-password,.register-form-username,.register-form-email,.register-form-password{
+    background-color: #44a5ff95;
+    padding-left: 30px;
+}
+
+.login-form-submit,.register-form-submit{
+    background-color: #FFAAE2;
+}
+
+.register-footer{
+    position: relative;
+    margin-left: 3.5rem;
+    margin-top: 2rem;
+}
+
+.register-footer a{
+    color: #44A5FF;
+}
+
+.register-login-page{
+    background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.register-login-component{
+    background: conic-gradient(
+    from 180deg at 50% 50%,
+    rgb(212.29, 237.06, 255) 2.31deg,
+    rgb(179.14, 223.14, 255) 21.63deg,
+    rgb(198.69, 227.97, 255) 63.1deg,
+    rgb(227.59, 243.49, 255) 88.08deg,
+    rgb(225.04, 244.21, 255) 184.47deg,
+    rgb(219.09, 241.36, 255) 244.77deg,
+    rgb(221.64, 242.99, 255) 312.23deg,
+    rgb(229.29, 242.66, 255) 345.37deg
+    );
+    background-color: rgba(255, 255, 255, 1);
+    height: 46rem;
+    position: relative;
+    width: 100rem;
+}
+
+.register-login-component .vector-15 {
+    height: 111px;
+    left: 23.5rem;
+    position: relative;
+    top: 27rem;
+    width: 502px;
+}
+.register-login-component .vector-16 {
+    height: 400px;
+    left: 30rem;
+    position: relative;
+    top: -5rem;
+    width: 144px;
+}
+
+.register-login-component .vector-8 {
+    height: 500px;
+    left: -65.5rem;
+    position: relative;
+    top: 7rem;
+    width: 100px;
+}
+
+.register-login-frame{
+    position: absolute;
+    left: 35%;
+    top: 5vh;
+}
+
+
+/* info component */
+.info-component .accordion-summary, .slider-label{
+    font-family: 'Roboto Slab', serif;
+}
+
+.info-component{
+    position: relative;
+    width: 50rem;
+    left: 25rem;
+    top:-20rem
+}
+.MuiAccordion-root .MuiAccordion-region{
+    background-color: #defffb4a;
+    backdrop-filter: blur(10px);
+}
+
+.MuiAccordion-root .MuiAccordionSummary-root{
+    background: linear-gradient(180deg, rgba(195, 236, 254, 0.497) 0%, rgba(221, 237, 255, 0.475) 100%);
+    backdrop-filter: blur(10px);
+}
+
+
+/* info page */
+.info-page{
+    background: url(./assets/info-page.png);
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 2012px;
+    display: flex;
+    flex-direction: column;
+}
+.info-page-nav{
+    display: flex;
+    background-color: #FFF8F8;
+    justify-content: space-between;
+    padding: 1rem;
+    box-shadow: 0 9px 4px 0 rgba(0, 0, 0, 0.25);
+}
+.info-page-body{
+    display: flex;
+    position: relative;
+    top: 30rem;
+    justify-content:flex-start;
+    align-items: center;
+}
+.info-page-title{
+    font-family:'Roboto Slab', serif;
+    position: relative;
+    top: 5vh;
+    margin-left: 5vw;
+}
+.info-page-footer{
+    background-color: #A4EAF9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family:'Roboto Slab', serif;
+    font-size: large;
+    position: relative;
+    top: 5vh;
+    width: 100%;
+    height: 80px;
+    margin-top: 1300px;
+}
+
+/* Home Page css */
+
+.home-page{
+    background-color: #FFE8F4;
+    height : 100vh;
+    width : 100vw;
+}
+
+.nav-bar{
+    background: linear-gradient(271deg, #B6B4FE 9.49%, rgba(255, 1, 78, 0.17) 110.87%, rgba(255, 7, 82, 0.00) 165.48%);
+    backdrop-filter: blur(2px); 
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0px;
+    height:14%;
+}
+
+#portgen{
+    height:40%;
+    position: relative;
+    top:40%;
+    left:5%;
+}
+
+#register{
+    font-family: 'Roboto Slab', serif;
+    position: relative;
+    top:40%;
+    right:5%;
+    color:#000000;
+}
+#register a{
+    text-decoration: none;
+}
+#register:hover{
+    color: #F96EB9
+}
+
+#headline-body-homePage{
+    font-family: 'Roboto Slab', serif;
+    text-align: center;
+    padding:3%;
+    font-size: 1.8rem;
+    height:100%;
+}
+
+.footer-HomePage{
+    display: flex;
+    justify-content: space-around;
+    height:100%;
+
+}
+
+#hi{
+    height:30%;
+    width:30%;  
+}
+
+#rec{
+    height:30%;
+    width:30%;
+    position: relative;
+    right:0%;
+}
+
+
+/* SETTING PAGE*/
+
+
+/* name animation */
+.displayName{
+    font-family: "Ribeye Marrow";
+    display: flex;
+    align-items: center;
+    padding:10%;
+}
+
+/* logo animation */
+.rotate {
+    animation: rotation 2s infinite linear;
+    height:50%;
+    width:10%;   
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+.setting-body{
+    background: conic-gradient(from 147deg at 50% 50%, #BEE0F9 0deg, #ADDDFF 2.3137041740119457deg, #71C2FD 21.62970632314682deg, #87CCFD 72.35991060733795deg, #CEEAFF 237.51053094863892deg, #C4E6FF 340.0836110115051deg, #C0E1F9 345.7923173904419deg);
+    height:100vh;
+    width:100vw;
+}
+
+.setting-nav{
+    /* height:30%; */
+    width:100%;
+    display: flex;
+    align-items: center;
+}
+
+.setting-nav p{
+    font-family: "Ribeye Marrow";
+    font-size: 2rem;
+}
+
+.setting-content{
+    display:flex;
+    height:30%;
+}
+
+.setting-content img{
+    margin:0% 2%;
+    /* height: 40%; */
+}
+
+.setting-details{
+    position: relative;
+    top: -46vh;
+    width: 40vw;
+    height:7vh;
+    padding:3%;
+    left:60vw;
+}
+
+
+/* MAIN PAGE CSS */
+
+/* profile animation */
+.tobepopulated{
+    display:flex;
+    position: relative;
+}
+
+#profileMain{
+    height : 3.5rem;
+    width : 3.5rem;
+    bottom:25%;
+    right:0px;
+}
+
+#here{
+    position: relative;
+}
+
+#here div{
+    bottom:25%;
+}
+
+.insideToBePopulated{
+    height : 2.5rem;
+    width:2.5rem;
+    padding:0.2rem;
+    animation: slide-up .3s ease-out;
+}
+
+@keyframes slide-up {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(60%) ;
+      opacity: 1;
+    }
+}
+
+/* mainpage */
+
+#mainpage-back{
+    display:flex;
+    justify-content: flex-end;
+}
+
+#mainpage-back img{
+    position: absolute;
+    z-index: -1;
+    height: 40rem;
+    width:30rem;
+    right:0px;
+}
+
+#mainPageNavBar{
+    display:flex;
+    justify-content: space-between;
+    padding : 1rem;
+    background: #FFF8F8;
+    box-shadow: 0px 9px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.MainPgPortCatSet div{
+    display:flex;  
+}
+
+.mainPgPortfolio{
+    height: 17rem;
+    width: 11rem;
+    padding-right: 2rem;
+}
+
+.MainPgPortCatSet{
+    padding: 0rem 3rem;
+    padding-top: 3rem;
+    /* margin:2rem; */
+}
+
+.here-mainpage{
+    background-image: url("./assets/Vector 23.svg"),  url("./assets/Vector 24.svg"), url("./assets/Vector 25.svg"), url("./assets/Vector 26.svg");
+    /* background-position: center, center, center, center; */
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+}
+      
+
+.mainPagefotter{
+    margin-top: 2rem;
+    border: 4px solid #FFF9FF;
+    background: #A4EAF9;
+}
+
+.mainPagefotter p{
+   text-align: center;
+}
+
+.propMain{
+    position: absolute;
+    z-index: -1;
+}
+
+/* .propsblueMainPage{
+    padding-top: 30%;
+} */
+
+
+
+
+
+
+
+
+
+
