@@ -8,11 +8,11 @@ import {redirect,Link,useNavigate} from 'react-router-dom'
 
 export default function Register(){
     const [registerState,setregisterState] = React.useState({
-        userName:"",
+        UserName:"",
         Email:"",
         RecoveryPin:"",
         Password:"",
-        cnfPass:""
+        CnfPass:""
     })
     const navigate = useNavigate()
 
@@ -35,10 +35,10 @@ export default function Register(){
         <img src={register} className="register-img" alt="register"/>
 
         <form action="#" className="register-form">
-            <input type="text" name="userName" placeholder={`Enter Your Username 👤`} className="register-form-username" /> 
+            <input type="text" name="UserName" placeholder={`Enter Your Username 👤`} className="register-form-username" /> 
             <input type="email" name="Email" className="register-form-email" placeholder = {`Enter your Email ✉️`} onChange={HandleChange}/>
             <input type="password" name="Password"  className="register-form-password" placeholder={`Enter Your Password 🔑`} onChange={HandleChange}/>
-            <input type="password" name="cnfPass"  className="register-form-password" placeholder= {`Reneter Your Password 🔑`} onChange={HandleChange}/>
+            <input type="password" name="CnfPass"  className="register-form-password" placeholder= {`Reneter Your Password 🔑`} onChange={HandleChange}/>
             <input type="password" name="RecoveryPin"  className="register-form-password" placeholder= {`Setup a recovery pin 🛂`} onChange={HandleChange}/>
             <button type="submit" className="register-form-submit">Register</button>
         </form>
