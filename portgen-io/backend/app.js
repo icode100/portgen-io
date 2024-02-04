@@ -5,8 +5,8 @@ const connectDB = require('./db/connect.js');
 const port = 5000;
 
 
-const info = require('./routes/info.js')
-const setting = require('./routes/settings.js')
+const info = require('./routers/info.js')
+const setting = require('./routers/settings.js')
 
 
 connectDB(process.env.MONGO_URI);
