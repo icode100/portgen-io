@@ -9,3 +9,4 @@ class UnauthorizedError extends CustomError{
 }
 
 module.exports = UnauthorizedError;
+
