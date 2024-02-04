@@ -57,7 +57,7 @@ app.use(mongoSanitize());
 const port = process.env.port || 5000;
 const start = async (req, res) => {
   try {
-    // await connect_portgen(process.env.MONGO_URI);
+    await connect_portgen(process.env.MONGO_URI);
     app.listen(port,()=>console.log(`welcome to PortGen.IO on port:${port}`))
   } catch (error) {
     console.log(error);
