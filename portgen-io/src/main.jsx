@@ -7,8 +7,8 @@ import Webd1 from './components/portfolios/webd1.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    {/* <App/> */}
-    <Webd1/>
+    <App/>
+    {/* <Webd1/> */}
     {/* <Test/> */}
   </React.StrictMode>,
 )
