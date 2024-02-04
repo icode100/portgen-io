@@ -1,21 +1,16 @@
-require('.env').config();
-const express = require('express');
-const app = express();
-const connectDB = require('./db/connect.js');
-const port = 5000;
+const express = require("express");
+const connect_portgen = require("./db/connect");
+require("dotenv").config();
+app = express();
 
+app.use(express.json());
 
-const info = require('./routes/info.js')
-const setting = require('./routes/settings.js')
+const start = async (req, res) => {
+  try {
+    await connect_portgen(process.env.MONGO_URI);
+  } catch (error) {
+    app.listen(process.env.port || 5000,()=>console.log("welcome to PortGen.IO"))
+  }
+};
 
-
-connectDB(process.env.MONGO_URI);
-app.listen(port, () =>
-    console.log(`Server is listening on port ${port}...`)
-);
-
-
-app.use(express.json())
-
-app.use('/api/v1/info',info)
-app.use('/api/v1/settings',setting)
+start()

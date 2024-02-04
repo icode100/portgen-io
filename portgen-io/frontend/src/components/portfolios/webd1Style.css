@@ -1,0 +1,160 @@
+body{
+    background-color: #AA94D7;
+}
+.webd1_navbar{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    height:15rem;
+    margin:0px;
+    padding:0px;
+}
+.webd1_navbar div{
+    background: #2F0F62;
+    opacity: 63%;
+    height: 9rem;
+    width:100%;
+}
+.webd1_navbar img{
+    margin:auto;
+    margin-top: 3.5rem;
+    position: absolute;
+}
+.desc{
+    text-align: center;
+}
+.projectsDesc{
+    display:flex;
+    flex-direction: column;
+    margin-top:3rem;
+}
+.proDescHead p{
+    text-align: center;
+    font-size: xx-large;
+    margin:0px;
+}
+
+/* project */
+.projectwebd1{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background:linear-gradient(245deg, rgba(166, 114, 251, 0.497) 0%, rgba(230, 215, 255, 0.475) 100%);
+    width:20rem;
+    height:17rem;
+    border-radius: 25px;
+    padding:1rem;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 1);
+}
+.projectwebd1 div{
+    display:flex;
+    flex-direction: column;
+}
+.proTot{
+    display:flex;
+    justify-content: space-around;
+    background: rgba(47, 15, 98, 0.63) ;
+    padding: 3rem;
+}
+
+.lower a{
+    color: black;
+}
+
+.skillClass{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height:8rem;
+    width:4rem;
+}
+
+.skillClass div{
+    height:5rem;
+}
+
+.skillsTot{
+    display:flex;
+    justify-content: space-around;
+    background: rgba(47, 15, 98, 0.63) ;
+    padding: 3rem;
+}
+
+.skillsSet{
+    margin-top:4rem;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.skillsSet h2{
+    text-align: center;
+}
+
+.company{
+    display:flex;
+    flex-direction: column;
+    background:linear-gradient(245deg, rgba(166, 114, 251, 0.497) 0%, rgba(230, 215, 255, 0.475) 100%);
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 1);
+    width:20rem;
+    height:17rem; 
+    border-radius: 25px;
+    padding: 2rem;
+}
+
+.companyTot{
+    display:flex;
+    justify-content: space-around;
+    background: rgba(47, 15, 98, 0.63) ;
+    padding: 3rem; 
+}
+
+.company-{
+    margin-top: 4rem;
+}
+
+.companyHead h2{
+    text-align: center;
+}
+
+.education-{
+    display:flex;
+    justify-content: space-between;
+}
+
+.personal div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.info{
+    display:flex;
+    justify-content: center;
+}
+
+.total-info{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3rem;
+    /* background: url('../../assets/Rectangle 5inside.svg') no-repeat center center fixed;
+    background-size: 50% 50%; */
+}
+
+.total-info img{
+    position: absolute;
+    z-index: -1;
+    height:23rem;
+    width:30rem;
+    left:35%;
+}
+
+.in-info{
+    margin:0rem 3rem;
+}
+
+.about{
+    text-align: center;
+    margin-top:3rem;
+}
