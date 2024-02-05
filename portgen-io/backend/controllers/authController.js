@@ -10,6 +10,7 @@ const register = async (req, res) => {
   if (Password !== CnfPass) throw new BadRequestError("Passwords do not match");
   const user = await User.create({ UserName, Email, Password, RecoveryPin });
   const token = user.createToken();
+  console.log(user);
   res
     .status(StatusCodes.CREATED)
     .json({ user: { name: user.UserName, email: user.Email }, token: token });
@@ -20,7 +21,7 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   const { Email, Password } = req.body;
   if (!Email || !Password) throw new BadRequestError("incomplete credentials");
-  const user = User.findOne({ Email });
+  const user = await User.findOne({ Email });
   if (!user) throw new UnauthenticatedError("user not found");
   const isPass = await user.checkPassword(Password);
   if (!isPass) throw new UnauthenticatedError("invalid credentials");
