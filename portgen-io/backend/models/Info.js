@@ -6,6 +6,10 @@ const Info = new mongoose.Schema({
         type : String,
         required : true
     },
+    UserId:{
+        type: mongoose.Types.ObjectId,
+        ref: 'User'
+    },
     Intro : {
         type : String,
         required : true
@@ -19,8 +23,13 @@ const Info = new mongoose.Schema({
         required : true
     },
     Email : {
-        type : String,
-        ref : User
+        type :String,
+        unique:true,
+        required: [true, 'Please provide email'],
+        validate: {
+          validator: validator.isEmail,
+          message: 'Please provide valid email',
+        },
     },
     GitHub : {
         type : String,

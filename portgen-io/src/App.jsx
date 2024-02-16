@@ -1,0 +1,39 @@
+import React from 'react';
+import SettingPage from './components/SettingPage.jsx';
+import HomePage from './components/HomePage.jsx';
+import MainPage from './components/MainPage.jsx';
+import pic1 from "./assets/portfilo1.png";
+import pic2 from "./assets/potfolio2.png";
+import pic3 from "./assets/portfolio3.png";
+
+
+function App() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <>
+      <div>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  )
+}
+
+export default App

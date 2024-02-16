@@ -16,6 +16,7 @@ const notFound = require("./middleware/notFoundMidware");
 
 // routers
 const authRouter = require('./routers/authRouter');
+const settingsRouter = require('./routers/settingsRouter')
 
 // security
 const rateLimiter = require('express-rate-limit');
@@ -34,6 +35,7 @@ app.use(express.json());
 
 //route middleware
 app.use('/portapi/v1/reglog',authRouter)
+app.use('/portapi/v1/settings',auth_midware,settingsRouter)
 
 // extra midware
 app.use(errorHandlerMiddleware);

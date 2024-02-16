@@ -43,7 +43,7 @@ User.methods.checkPassword = async function (inputPassword){
 
 User.methods.createToken =  function(){
     return jwt.sign(
-        {userId:this._id, name:this.UserName},
+        {userId:this._id, email:this.Email ,name:this.UserName},
         process.env.JWT_KEY,
         {expiresIn:process.env.JWT_LIFETIME}
     )

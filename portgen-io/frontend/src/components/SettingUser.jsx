@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 export default function SettingUser(){
 
     const [settingUser,setUser] = React.useState({
-        recovery:"",
+        email:"",
         user:""
     })
     function handleChange(event){
@@ -25,10 +25,8 @@ export default function SettingUser(){
                     label="Recovery Pin"
                     placeholder="Enter your recovery pin"
                     multiline
-                    name='recovery'
-                    type='password'
-                    minlength='4'
-                    maxlength="4"
+                    name='email'
+                    type='email'
                     onChange={handleChange}
                     value={settingUser.recovery}
                     />
