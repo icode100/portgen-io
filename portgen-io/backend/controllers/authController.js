@@ -1,13 +1,18 @@
+const bcrypt = require("bcryptjs");
 const User = require("../models/User");
 const { StatusCodes } = require("http-status-codes");
 const { BadRequestError, UnauthenticatedError } = require("../errors");
 
+
+
 // register user
 const register = async (req, res) => {
-  const { UserName, Email, RecoveryPin, Password, CnfPass } = req.body;
+  let { UserName, Email, RecoveryPin, Password, CnfPass } = req.body;
   notUnique = await User.findOne({ Email });
   if (notUnique) throw new BadRequestError("User Already Exists ");
   if (Password !== CnfPass) throw new BadRequestError("Passwords do not match");
+  const salt = await bcrypt.genSalt(10)
+  Password = await bcrypt.hash(Password, salt)
   const user = await User.create({ UserName, Email, Password, RecoveryPin });
   const token = user.createToken();
   res
@@ -16,11 +21,10 @@ const register = async (req, res) => {
 };
 
 // login user
-
 const login = async (req, res) => {
   const { Email, Password } = req.body;
   if (!Email || !Password) throw new BadRequestError("incomplete credentials");
-  const user = User.findOne({ Email });
+  const user = await User.findOne({ Email }).exec();
   if (!user) throw new UnauthenticatedError("user not found");
   const isPass = await user.checkPassword(Password);
   if (!isPass) throw new UnauthenticatedError("invalid credentials");
@@ -28,6 +32,7 @@ const login = async (req, res) => {
   res
     .status(StatusCodes.OK)
     .json({ user: { name: user.UserName, email: user.Email }, token: token });
+  
 };
 
 // logout

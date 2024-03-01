@@ -13,6 +13,8 @@ import NavIcon from './NavIcon';
 // data : [{title:
 //          images:}]
 
+
+
 export default function MainPage(props) {
   let data = props.data;
   let totalSets = [];

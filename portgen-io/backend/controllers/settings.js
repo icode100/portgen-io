@@ -1,17 +1,20 @@
-import UserModel from '../models/User.js';
+const User = require('../models/User.js');
+const bcrypt = require("bcryptjs");
+const { StatusCodes } = require("http-status-codes");
+const { BadRequestError, UnauthenticatedError } = require("../errors");
 
 const changeEmail = async (req, res) =>{
     const {Email, NewMail} = req.body;
-    const UserFound = await UserModel.find({Email : Email}).exec();
-
-    if (req.user._id === UserFound._id){
+    const UserFound = await User.findOne({Email : Email}).exec();
+    
+    if (UserFound !== undefined && req.user.userId === UserFound._id.toString()){
         if(Email === NewMail){
             throw new BadRequestError("use a new email");
         }
         else{
             const updatedUser = await User.findOneAndUpdate(
-                { _id: user._id },
-                { $set: { email: NewMail } },
+                { _id: req.user.userId },
+                { $set: { Email: NewMail } },
                 { new: true }
               ).exec();
 
@@ -29,16 +32,26 @@ const changeEmail = async (req, res) =>{
 
 const changePassword = async (req, res) =>{
     const {Email, NewPassword} = req.body;
-    const UserFound = await UserModel.find({Email : Email}).exec();
+    const UserFound = await User.findOne({Email : Email}).exec();
+    
+    if (UserFound !== undefined && req.user.userId === UserFound._id.toString()){
+        // const salt  = await bcrypt.genSalt(10);
+        // const newPassword = await bcrypt.hash(NewPassword,salt);
+        // console.log(newPassword, UserFound.Password)
+        // const hi = await bcrypt.compare(NewPassword,UserFound.Password)
+        // console.log(hi)
 
-    if (req.user._id === UserFound._id){
-        if(UserFound.passWord === NewPassword){
+        
+        
+        if(newPassword === UserFound.Password){
             throw new BadRequestError("use a new password");
         }
         else{
+            const salt = await bcrypt.genSalt(10)
+            Password = await bcrypt.hash(NewPassword, salt)
             const updatedUser = await User.findOneAndUpdate(
-                { _id: user._id },
-                { $set: { passWord: NewPassword } },
+                { _id: req.user.userId },
+                { $set: { PassWord: newPassword } },
                 { new: true }
               ).exec();
 
@@ -55,22 +68,22 @@ const changePassword = async (req, res) =>{
 
 const changeUserName = async (req, res) =>{
     const {Email, NewUsername} = req.body;
-    const UserFound = await UserModel.find({Email : Email}).exec();
+    const UserFound = await User.findOne({Email : Email}).exec();
 
-    if (req.user._id === UserFound._id){
+    if (UserFound !== undefined && req.user.userId === UserFound._id.toString()){
         if(UserFound.UserName === NewUsername){
-            throw new BadRequestError("use a new user");
+            throw new BadRequestError("use a new username");
         }
         else{
             const updatedUser = await User.findOneAndUpdate(
-                { _id: user._id },
-                { $set: { passWord: NewPassword } },
+                { _id: req.user.userId },
+                { $set: { UserName: NewUsername } },
                 { new: true }
               ).exec();
 
             res
               .status(StatusCodes.OK)
-              .json({ msg: "password updation successfull" });
+              .json({ msg: "UserName updation successfull" });
         }
 
     }
@@ -81,4 +94,6 @@ const changeUserName = async (req, res) =>{
 
 module.exports = {
     changeEmail,
+    changePassword,
+    changeUserName
 }

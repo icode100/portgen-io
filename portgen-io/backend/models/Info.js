@@ -1,10 +1,15 @@
 const mongoose = require('mongoose')
 const User = require('./User.js')
+const validator = require("validator")
 
 const Info = new mongoose.Schema({
     Name : {
         type : String,
         required : true
+    },
+    UserId:{
+        type: mongoose.Types.ObjectId,
+        ref: 'User'
     },
     Intro : {
         type : String,
@@ -19,10 +24,19 @@ const Info = new mongoose.Schema({
         required : true
     },
     Email : {
-        type : String,
-        ref : User
+        type :String,
+        unique:true,
+        required: [true, 'Please provide email'],
+        validate: {
+          validator: validator.isEmail,
+          message: 'Please provide valid email',
+        },
     },
     GitHub : {
+        type : String,
+        required : true
+    },
+    LinkedIn :{
         type : String,
         required : true
     },
@@ -41,6 +55,10 @@ const Info = new mongoose.Schema({
             type : String,
             required : true
         },
+        Dep1:{
+            type : String,
+            required : true
+        },
         Deg1 : {
             type : String,
             required : true
@@ -50,9 +68,11 @@ const Info = new mongoose.Schema({
             required : true
         },
         Uni2: String,
+        Dep2: String,
         Deg2: String,
         Gpa2: Number,
         Uni3: String,
+        Dep3: String,
         Deg3: String,
         Gpa3: Number,
     },
