@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router()
 
-const {changeEmail, changePassword, changeUserName} = require('../controllers/settings')
+const {changeEmail, changePassword, changeUserName} = require('../controllers/settingsController')
 
 router.route('/changeMail').post(changeEmail)
-router.route('/changePassword').post(changePassword)
-router.route('/changeUserName').post(changeUserName)
+router.route('/changePass').post(changePassword)
+router.route('/changeUser').post(changeUserName)
 
 
 module.exports = router

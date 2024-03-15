@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const User = require('./User.js')
 const validator = require("validator")
-
 const Info = new mongoose.Schema({
     Name : {
         type : String,
@@ -130,11 +129,11 @@ const Info = new mongoose.Schema({
     YearsExp : Number,
     Company : {
         Comp1 : String,
-        WorkDesk1 : String,
+        WorkDesc1 : String,
         Comp2 : String,
-        WorkDesk2 : String,
+        WorkDesc2 : String,
         Comp3 : String,
-        WorkDesk3 : String,
+        WorkDesc3 : String,
     }
 
 })

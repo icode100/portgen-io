@@ -13,7 +13,7 @@ const auth_midware = async (req,res,next)=>{
     try {
         const payload = jwt.verify(token, process.env.JWT_KEY)
         // attach the user to the job routes
-        req.user = { userId: payload.userId, name: payload.name }
+        req.user = { userId: payload.userId, email:payload.email, name: payload.name }
         next()
     } catch (error) {
 

@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router()
-const {make} = require('../controllers/infoController')
 
-router.route('/submit').get((req, res)=>{
-    res.send('this is the info page')
-})
+const {makeInfo, getInfo} = require('../controllers/infoController')
 
-router.route('/make').post(make)
+router.route('/submitinfo').post(makeInfo)
+router.route('/getinfo').post(getInfo)
+
+
 
 module.exports = router

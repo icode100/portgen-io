@@ -6,8 +6,8 @@ import Button from "@mui/material/Button";
 export default function SettingEmail(){
 
     const [settingEmail,setEmail] = React.useState({
-        recovery:"",
-        email:""
+        Email:"",
+        NewEmail:""
     })
     function handleChange(event){
         setEmail({
@@ -25,8 +25,8 @@ export default function SettingEmail(){
                     label="Recovery Pin"
                     placeholder="Enter your recovery pin"
                     multiline
-                    name='recovery'
-                    type='password'
+                    name='Email'
+                    type='email'
                     minlength='4'
                     maxlength="4"
                     onChange={handleChange}
@@ -37,7 +37,7 @@ export default function SettingEmail(){
                     placeholder="Enter your new Email"
                     multiline
                     type='email'
-                    name='email'
+                    name='NewEmail'
                     onChange={handleChange}
                     value={settingEmail.email}
                     />

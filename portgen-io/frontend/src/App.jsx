@@ -9,10 +9,14 @@ import RegisterLogin from './components/RegisterLogin.jsx'
 import Login from './components/Login.jsx'
 import Register from './components/Register.jsx'
 import InfoPage from './components/InfoPage.jsx'
+<<<<<<< HEAD
 import Webd1 from './components/portfolios/Protfolio1.jsx';
 import Webd2 from './components/portfolios/Protfolio2.jsx';
 import Webd3 from './components/portfolios/Portfolio3.jsx';
 
+=======
+import axios from 'axios'
+>>>>>>> c1529566f3ab9922cd1646699c980aa1a8c5e4d0
 import {
   BrowserRouter,
   Navigate,

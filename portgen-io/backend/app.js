@@ -15,14 +15,12 @@ require('express-async-errors');
 const errorHandlerMiddleware = require('./middleware/errorHandlerMidware');
 const auth_midware = require('./middleware/authMidware');
 const notFound = require("./middleware/notFoundMidware");
+const cookieParser = require('cookie-parser');
 
 // public routers
 const authRouter = require('./routers/authRouter');
-const infoRouter = require('./routers/infoRouter');
-
-
-// private routers
-const settingRouter = require('./routers/settingsRouter')
+const settingsRouter = require('./routers/settingsRouter')
+const infoRouter = require('./routers/infoRouter')
 
 // security
 const rateLimiter = require('express-rate-limit');
@@ -36,13 +34,11 @@ const mongoSanitize = require('express-mongo-sanitize');
 
 
 app.use(express.json());
-
+app.use(cookieParser('JWT_KEY'));
 //route middleware
 app.use('/portapi/v1/reglog',authRouter)
-app.use('/portapi/v1/settings', auth_midware, settingRouter)
-app.use('/portapi/v1/info',  infoRouter )
-
-
+app.use('/portapi/v1/settings',auth_midware,settingsRouter)
+app.use('/portapi/v1/info',auth_midware,infoRouter)
 
 // extra midware
 app.use(errorHandlerMiddleware);

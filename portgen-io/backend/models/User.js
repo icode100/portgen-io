@@ -31,9 +31,9 @@ const User = new mongoose.Schema({
 })
 
 User.pre('save',async function(){
-    if(!this.isModified("password")) return;
+    if(!this.isModified("Password")) return;
     const salt  = await bcrypt.genSalt(10);
-    this.password = await bcrypt.hash(this.password,salt);
+    this.Password = await bcrypt.hash(this.Password,salt);
 })
 
 User.methods.checkPassword = async function (inputPassword){
@@ -43,7 +43,7 @@ User.methods.checkPassword = async function (inputPassword){
 
 User.methods.createToken =  function(){
     return jwt.sign(
-        {userId:this._id, name:this.UserName},
+        {userId:this._id, email:this.Email ,name:this.UserName},
         process.env.JWT_KEY,
         {expiresIn:process.env.JWT_LIFETIME}
     )
