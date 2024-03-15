@@ -26,6 +26,7 @@ const register = async (req, res) => {
 // login user
 
 const login = async (req, res) => {
+  console.log(req.body)
   const { Email, Password } = req.body;
   if (!Email || !Password) throw new BadRequestError("incomplete credentials");
   const user = await User.findOne({ Email });

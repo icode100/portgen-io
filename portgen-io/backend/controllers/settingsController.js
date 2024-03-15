@@ -28,7 +28,9 @@ const changePassword = async (req, res) =>{
     if(!cred.email || !cred.pass) throw new BadRequestError("incomplete credentials");
     if(!UserFound) throw new UnauthenticatedError("user not found");
     if (cred.pass !== cred.cnfpass) throw new BadRequestError("Passwords do not match");
-    const user = await User.findByIdAndUpdate(userId,{ Password: cred.pass},{ new: true, runValidators:true });
+    const salt  = await bcrypt.genSalt(10);
+    const hashedpass = await bcrypt.hash(cred.pass,salt)
+    const user = await User.findByIdAndUpdate(userId,{ Password: hashedpass},{ new: true, runValidators:true });
     res.status(StatusCodes.OK).json({ msg: "password updation successfull",ID:user._id }); 
 }
 

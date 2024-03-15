@@ -9,6 +9,7 @@ import RegisterLogin from './components/RegisterLogin.jsx'
 import Login from './components/Login.jsx'
 import Register from './components/Register.jsx'
 import InfoPage from './components/InfoPage.jsx'
+import axios from 'axios'
 import {
   BrowserRouter,
   Navigate,
