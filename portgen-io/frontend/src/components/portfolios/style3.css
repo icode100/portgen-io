@@ -1,0 +1,200 @@
+/* total view */
+.web3{
+    display:flex;
+    flex-direction: row;
+    height:100vh;
+    /* margin:0rem 3rem; */
+}
+
+.web3_left{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0rem 1rem;
+    background-color: #a8fdac;
+}
+
+.web3_right{
+    display:flex;
+    /* align-items: center; */
+    justify-content: center;
+    background-color: rgb(245, 253, 255);
+    width:100%;
+    padding-top:6rem;
+    overflow-y: scroll;
+}
+
+/* navbar */
+.port3__navbar{
+    display:flex;
+    flex-direction: column; 
+}
+
+.port3__upper h3{
+    border-bottom: 2px solid black;
+}
+
+.port3__lower{
+    margin: 2rem 0rem;
+}
+
+/* home component */
+.port3__home{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:80%;
+}
+.port3__home_out{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding:2rem;
+    border-radius: 20px;
+    background-color: #cdfbcf;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+    width:70%;
+    height:60vh;
+}
+.port3__lower h6{
+    cursor: pointer;
+}
+.port3__rightHome{
+    margin-right:2rem;
+}
+.port3__rightHome h1{
+    border-bottom: 2px solid black;
+}
+.port3__leftHome{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 1.5rem;
+    height:inherit
+}
+.web3__footerCamp_head{
+    border-bottom: 2px solid black;
+}
+
+/* projects component */
+.port3__projects{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 2rem;
+    margin-top:6rem;
+}
+.port3__projects h1{
+    text-align: center;
+    border-bottom: 2px solid black;
+    margin-bottom: 1rem;
+    margin-top:4rem;
+}
+.port3__projects_inside{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.port3__project{
+    margin:0.8rem 0.8rem;
+    border-radius: 20px;
+    padding:1rem;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+    width:60%;
+    background-color: #cdfbcf;
+}
+
+/* past experiences */
+.port3__workExp{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 2rem;
+    margin-top:6rem;
+}
+.port3__workExp h1{
+    text-align: center;
+    border-bottom: 2px solid black;
+    margin-bottom: 1rem;
+}
+.port3__workExp_inside{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.port3__company{
+    margin:0.8rem 0.8rem;
+    border-radius: 20px;
+    padding:1rem;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+    width:60%;
+    background-color: #cdfbcf;
+}
+
+/* educational copmonent */
+.port3__edu__top{
+    display:flex;
+    flex-direction: column;
+}
+.port3__eduPart{
+    display: flex;
+    justify-content: space-between;
+} 
+.port3__edu{
+    border-radius: 20px;
+    padding:1rem;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+    background-color: #cdfbcf;
+}
+.port3__edu h1{
+    text-align: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid black;
+}
+
+/* skill component */
+.port3__skill{
+    display:flex;
+    flex-direction: column;
+}
+
+.port3__skill_inside{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.port3__skill_inside{
+    display: flex;
+}
+
+.port3__skillClass {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height : 8rem;
+    width:4rem;
+    margin-left:1rem;
+};
+
+.port3__skillClass_div {
+    height:5rem;
+}
+
+.port3__skill{
+    border-radius: 20px;
+    padding:1rem;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+    background-color: #cdfbcf;
+    margin-top: 3rem;
+}
+
+.port3__skill h1{
+    text-align: center;
+    border-bottom: 2px solid black;
+}

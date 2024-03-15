@@ -436,9 +436,12 @@ body{
 }
 
 .mainPgPortfolio{
-    height: 17rem;
-    width: 11rem;
-    padding-right: 2rem;
+    height: 15rem;
+    width: 21rem;
+    margin-right: 2rem;
+    box-shadow: 0px 9px 4px 0px rgba(0, 0, 0, 0.);
+    border-radius: 10px;
+    
 }
 
 .MainPgPortCatSet{

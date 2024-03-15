@@ -19,7 +19,7 @@ export default function MainPage(props) {
   let data = props.data;
   let totalSets = [];
   for(let i = 0; i < data.length; i++) {
-    totalSets.push(<PortfolioCat key={i} title={data[i].title} images={data[i].images} />);
+    totalSets.push(<PortfolioCat key={i} title={data[i].title} images={data[i].images} url={data[i].urls} />);
   }
 
   return (
@@ -34,12 +34,6 @@ export default function MainPage(props) {
         <NavIcon img={profile}/>
       </div>
 
-      {/* <div className="propsblueMainPage">
-        <img src={Prop1} alt="" id="prop1" className="propMain"/>
-        <img src={Prop2} alt="" id="prop2" className="propMain"/>
-        <img src={Prop3} alt="" id="prop3" className="propMain"/>
-        <img src={Prop4} alt="" id="prop4" className="propMain"/>
-      </div> */}
       <div className = "here-mainpage">
         <div id="mainPageBody">
           {totalSets}    
