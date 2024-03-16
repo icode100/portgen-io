@@ -104,7 +104,7 @@ function Skill(props) {
     )
   }
 
-export default function webd1(props) {
+export default function Webd1(props) {
     const webd1_navbar = {
         display: 'flex',
         flexDirection: 'column',

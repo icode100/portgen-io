@@ -174,7 +174,7 @@ function Skill(props) {
     )
 }
 
-export default function Portfolio3() {
+export default function Webd3() {
     const [activeComponent, setActiveComponent] = useState(null);
 
   return (

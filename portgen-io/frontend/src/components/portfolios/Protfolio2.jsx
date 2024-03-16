@@ -178,7 +178,7 @@ function WorkExp(props){
 }
 
 
-export default function Protfolio2() {
+export default function Webd2() {
   const [activeComponent, setActiveComponent] = useState(null);
 
   return (
