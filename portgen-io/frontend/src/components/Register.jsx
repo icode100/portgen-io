@@ -7,6 +7,7 @@ import PasswordIcon from "@mui/icons-material/Password";
 import PersonIcon from "@mui/icons-material/Person";
 import { redirect, Link, useNavigate } from "react-router-dom";
 import { Alert, Snackbar } from "@mui/material";
+import axios from 'axios';
 
 
 
@@ -38,8 +39,9 @@ export default function Register() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log(registerState)
 
-    try {
+    try { 
       const response = await axios.post("/portapi/v1/reglog/register", registerState);
       console.log("Registration successful:", response.data);
       setOpenAlert(true);
@@ -71,6 +73,7 @@ export default function Register() {
           name="UserName"
           placeholder={`Enter Your Username 👤`}
           className="register-form-username"
+          onChange={HandleChange}
         />
         <input
           type="email"
@@ -100,7 +103,7 @@ export default function Register() {
           placeholder={`Setup a recovery pin 🛂`}
           onChange={HandleChange}
         />
-        <button type="submit" className="register-form-submit">
+        <button type="submit" className="register-form-submit" >
           Register
         </button>
       </form>

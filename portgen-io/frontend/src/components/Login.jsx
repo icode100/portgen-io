@@ -33,9 +33,11 @@ export default function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    console.log("i am here")
+    
     try {
-      const response = await axios.post("http://localhost:5000/portapi/v1/reglog/login", loginState);
+      console.log(loginState)
+      const response = await axios.post("/portapi/v1/reglog/login", loginState);
       console.log("login successful:", response.data);
       setOpenAlert(true);
       setAlertSeverity("success"); // Set success severity

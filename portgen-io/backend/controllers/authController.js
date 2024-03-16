@@ -8,6 +8,7 @@ const oneDay = 1000 * 60 * 60 * 24;
 
 // register user
 const register = async (req, res) => {
+  console.log(req)
   let { UserName, Email, RecoveryPin, Password, CnfPass } = req.body;
   notUnique = await User.findOne({ Email });
   if (notUnique) throw new BadRequestError("User Already Exists ");
@@ -26,15 +27,18 @@ const register = async (req, res) => {
   res
     .status(StatusCodes.CREATED)
     .json({ user: { name: user.UserName, email: user.Email }, token: token });
+
 };
 
 // login user
 const login = async (req, res) => {
+  console.log("this is me")
   console.log(req.body)
   const { Email, Password } = req.body;
   if (!Email || !Password) throw new BadRequestError("incomplete credentials");
   const user = await User.findOne({ Email });
   if (!user) throw new UnauthenticatedError("user not found");
+  console.log(user)
   const isPass = await user.checkPassword(Password);
   if (!isPass) throw new UnauthenticatedError("invalid credentials");
   const token = user.createToken();

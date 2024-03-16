@@ -37,6 +37,7 @@ User.pre('save',async function(){
 })
 
 User.methods.checkPassword = async function (inputPassword){
+    console.log(inputPassword)
     const result = await bcrypt.compare(inputPassword,this.Password);
     return result;
 }
