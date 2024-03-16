@@ -33,18 +33,37 @@ export default function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    try {
-      const response = await axios.post("http://localhost:5000/portapi/v1/reglog/login", loginState);
+    fetch("http://localhost:5000/portapi/v1/reglog/login", {
+      method: "POST", // Use POST for sending data
+      body: JSON.stringify(loginState), // Convert object to JSON string
+      headers: {
+        "Content-Type": "application/json"  // Specify JSON content type
+      }
+    })
+    .then(response => response.json())  // Parse response as JSON (optional)
+    .then(data => {
       console.log("login successful:", response.data);
       setOpenAlert(true);
       setAlertSeverity("success"); // Set success severity
       setTimeout(() => navigate("/main"), 2000); // Redirect after 2 seconds
-    } catch (error) {
+    })
+    .catch(error => {
       console.error("login failed:", error);
       setOpenAlert(true);
       setAlertSeverity("error"); // Set error severity
-    }
+    });
+
+    // try {
+    //   const response = await axios.post("http://localhost:5000/portapi/v1/reglog/login", loginState);
+    //   console.log("login successful:", response.data);
+    //   setOpenAlert(true);
+    //   setAlertSeverity("success"); // Set success severity
+    //   setTimeout(() => navigate("/main"), 2000); // Redirect after 2 seconds
+    // } catch (error) {
+    //   console.error("login failed:", error);
+    //   setOpenAlert(true);
+    //   setAlertSeverity("error"); // Set error severity
+    // }
   };
 
   return (

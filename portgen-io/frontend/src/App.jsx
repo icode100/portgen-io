@@ -51,9 +51,9 @@ function App() {
           <Route path='/info' element={<InfoPage/>} />
           <Route path='/settings' element={<SettingPage/>} />
           <Route path='/logout' element={<HomePage/>} />
-          <Route path = '/softWareEng/port1' element = {<Webd1/>}/>
-          <Route path = '/softWareEng/port2' element = {<Webd2/>}/>
-          <Route path = '/softWareEng/port3' element = {<Webd3/>}/>
+          {/* <Route path = '/softWareEng/port1' element = {<Webd1/>}/> */}
+          {/* <Route path = '/softWareEng/port2' element = {<Webd2/>}/> */}
+          {/* <Route path = '/softWareEng/port3' element = {<Webd3/>}/> */}
         </Routes>
       </BrowserRouter> 
     </>
