@@ -59,7 +59,7 @@ app.use(mongoSanitize());
 
 
 // db connect and listen
-const port = process.env.port || 8000;
+const port = process.env.port || 5000;
 const start = async (req, res) => {
   try {
     await connect_portgen(process.env.MONGO_URI);
