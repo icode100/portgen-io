@@ -3,7 +3,7 @@ import TextField  from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 
-export default function SettingEmail(){
+export function SettingEmail(){
 
     const [settingEmail,setEmail] = React.useState({
         Email:"",
@@ -16,7 +16,8 @@ export default function SettingEmail(){
         })
     }
 
-    console.log(settingEmail)
+  
+
     return(
         <>
             <form action="">
