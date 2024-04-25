@@ -2,7 +2,7 @@ const bcrypt = require("bcryptjs");
 const User = require("../models/User");
 const { StatusCodes } = require("http-status-codes");
 const { BadRequestError, UnauthenticatedError } = require("../errors");
-const oneDay = 1000 * 60 * 60 * 24;
+const oneDay = 1000 * 60 * 5;
 
 
 
@@ -42,26 +42,29 @@ const login = async (req, res) => {
   const isPass = await user.checkPassword(Password);
   if (!isPass) throw new UnauthenticatedError("invalid credentials");
   const token = user.createToken();
-  res.cookie('token', token, {
-    httpOnly: true,
-    expires: new Date(Date.now() + oneDay),
-    secure: process.env.NODE_ENV === 'production',
-    signed: true,
-  });
+  res
+    .cookie('token', token, {
+      httpOnly: true,
+      expires: new Date(Date.now() + oneDay),
+      secure: process.env.NODE_ENV === "production",
+      // sameSite:"Lax",
+      signed: true,
+    });
   res
     .status(StatusCodes.OK)
     .json({ user: { name: user.UserName, email: user.Email }, token: token });
-  
+
 };
 
 // logout
 const logout = async (req, res) => {
   res.cookie("token", "logout", {
     httpOnly: true,
-    expires: new Date(Date.now() + 1000),
+    expires: new Date(0), // Set to a past date
   });
   res.status(StatusCodes.OK).json({ msg: "user logged out!" });
 };
+
 
 
 module.exports = {
