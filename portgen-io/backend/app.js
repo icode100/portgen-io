@@ -30,11 +30,16 @@ const cors = require('cors');
 const mongoSanitize = require('express-mongo-sanitize');
 
 
+app.use(helmet());
+app.use(cors());
+app.use(xss());
+app.use(mongoSanitize());
+
 /****** body ******/
 
 
 app.use(express.json());
-app.use(cookieParser('JWT_KEY'));
+app.use(cookieParser(process.env.JWT_KEY));
 //route middleware
 app.use('/portapi/v1/reglog',authRouter)
 app.use('/portapi/v1/settings',auth_midware,settingsRouter)
@@ -52,10 +57,7 @@ app.use(
     max: 60,
   })
 );
-app.use(helmet());
-app.use(cors());
-app.use(xss());
-app.use(mongoSanitize());
+
 
 
 // db connect and listen
