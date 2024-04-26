@@ -23,7 +23,7 @@ export default function SettingEmail() {
       
         try {
           const url = "http://localhost:5000/portapi/v1/settings/changemail";
-          token = Cookies.get('token')
+          const token = Cookies.get('token')
           const options = {
             method: 'POST',
             headers: {

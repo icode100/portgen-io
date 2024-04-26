@@ -12,7 +12,7 @@ const auth_midware = async (req,res,next)=>{
 
     try {
         
-            // console.log(token)
+            console.log(token)
             const payload = jwt.verify(token, process.env.JWT_KEY)
             console.log(payload);
             try{
