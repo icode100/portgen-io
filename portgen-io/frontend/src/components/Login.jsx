@@ -33,13 +33,12 @@ export default function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
-      const response = await axios.post("http://localhost:5000/portapi/v1/reglog/login", loginState);
+      const response = await axios.post("http://localhost:5000/portapi/v1/reglog/login", loginState, {withCredentials: true});
       console.log("login successful:", response.data);
       setOpenAlert(true);
       setAlertSeverity("success"); // Set success severity
-      setTimeout(() => navigate("/main"), 2000); // Redirect after 2 seconds
+      setTimeout(() => navigate("/"), 2000); // Redirect after 2 seconds
     } catch (error) {
       console.error("login failed:", error);
       setOpenAlert(true);

@@ -7,7 +7,8 @@ import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
+import Cookies from 'js-cookie';
 const settings = ['settings', 'main','info','home', 'logout'];
 
 export default function NavIcon(props) {
@@ -21,11 +22,16 @@ export default function NavIcon(props) {
     setAnchorElUser(null);
   };
 
+ 
   const handleNavigation = (event)=>{
     const {setting} = event.currentTarget.dataset;
     // console.log(setting)
     if(setting==='home'){
         navigate('/')
+    }
+    else if (setting==='logout'){
+      Cookies.remove("token");
+      navigate('/')
     }
     else{
         navigate(`/${setting}`)

@@ -40,7 +40,7 @@ export default function Register() {
     event.preventDefault();
 
     try {
-      const response = await axios.post("/portapi/v1/reglog/register", registerState);
+      const response = await axios.post("/portapi/v1/reglog/register", registerState, {withCredentials: true});
       console.log("Registration successful:", response.data);
       setOpenAlert(true);
       setAlertSeverity("success"); // Set success severity

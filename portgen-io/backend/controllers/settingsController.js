@@ -7,15 +7,18 @@ const { BadRequestError, UnauthenticatedError } = require("../errors/index.js");
 // change email
 const changeEmail = async (req, res) =>{
     const cred = req.body;
+    console.log(cred)
     const {email,userId} = req.user;
     console.log(req.user);
     console.log(email)
     const UserFound = await User.findOne({Email:email});
-    if (!cred.Email || !cred.NewMail) throw new BadRequestError("incomplete credentials");
+    if (!cred.Email) throw new BadRequestError("incomplete Email");
+    if (!cred.NewEmail) throw new BadRequestError("incomplete NewEmail")
     if (!UserFound) throw new UnauthenticatedError("user not found");
     if (UserFound.Email.toString()!==cred.Email) throw new UnauthenticatedError("Emails do not match");
+    const newEmail = cred.NewEmail;
     console.log(cred.NewEmail)
-    const user = await User.findByIdAndUpdate(userId, { Email: cred.NewMail }, { new: true, runValidators:true });
+    const user = await User.findByIdAndUpdate(userId, { Email: newEmail }, { new: true, runValidators:true });
     console.log(user)
     res.status(StatusCodes.OK).json({ msg: "email updation successfull",ID:user._id });
 }

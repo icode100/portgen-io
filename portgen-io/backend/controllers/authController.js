@@ -2,7 +2,7 @@ const bcrypt = require("bcryptjs");
 const User = require("../models/User");
 const { StatusCodes } = require("http-status-codes");
 const { BadRequestError, UnauthenticatedError } = require("../errors");
-const oneDay = 1000 * 60 * 5;
+const oneDay = 1000 * 60 * 60 * 24;
 
 
 
@@ -32,39 +32,32 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   console.log(req.body)
   const { Email, Password } = req.body;
-  if (!Email || !Password) throw new BadRequestError("incomplete credentials");
+  if (!Email || !Password) return res.status(400).json({error:"Incomplete credentials"});
   const user = await User.findOne({ Email });
   if (!user) throw new UnauthenticatedError("user not found");
-  const isPass = await user.checkPassword(Password);
-  if (!isPass) throw new UnauthenticatedError("invalid credentials");
   const token = user.createToken();
   res
     .cookie('token', token, {
-      httpOnly: true,
       expires: new Date(Date.now() + oneDay),
-      secure: process.env.NODE_ENV === "production",
-      // sameSite:"Lax",
-      signed: true,
     });
+  const isPass = await user.checkPassword(Password);
+  if (!isPass) throw new UnauthenticatedError("invalid credentials");
   res
     .status(StatusCodes.OK)
     .json({ user: { name: user.UserName, email: user.Email }, token: token });
 
 };
 
-// logout
-const logout = async (req, res) => {
-  res.cookie("token", "logout", {
-    httpOnly: true,
-    expires: new Date(0), // Set to a past date
-  });
-  res.status(StatusCodes.OK).json({ msg: "user logged out!" });
-};
 
-
-
+const getdetails = async (req,res)=>{
+  const query = User.where({ UserId: req.user.userId });
+  const info = await query.findOne();
+  
+  // const info = await Info.findOne({ _id: req.user.userId });
+  res.status(StatusCodes.OK).json({_id:req.user.userId, email:req.user.email, name:req.user.name});
+}
 module.exports = {
   register,
   login,
-  logout,
+  getdetails
 }

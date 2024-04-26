@@ -11,15 +11,114 @@ import Box from '@mui/material/Box';
 import Autocomplete from '@mui/material/Autocomplete';
 import Countries from "./CountrySelect";
 import Slider from '@mui/material/Slider';
+import axios from 'axios';
+import Cookies from 'js-cookie'
+import SendIcon from '@mui/icons-material/Send';
+import { useNavigate } from "react-router-dom";
 const countries = Countries()
 
+const temp_data = {
+    "Profile": {
+        "Name": "Ipsit Das",
+        "Profession": "ML engineer",
+        "Age": "20",
+        "Nationality": "India",
+        "GitHub": "https://www.github.com/icode100",
+        "LinkedIn": "this is linekdin profile",
+        "PhoneNo": "9310686787"
+    },
+    "About": {
+        "NoOfProjects": "3",
+        "Awards": "0",
+        "Intro": "I am an ML enthusiast"
+    },
+    "Education": {
+        "edu1": {
+            "Uni1": "ABC ",
+            "Dep1": "XYZ",
+            "Deg1": "NA",
+            "Gpa1": "10"
+        },
+        "edu2": {
+            "Uni2": "MNP",
+            "Dep2": "QRS",
+            "Deg2": "xyz",
+            "Gpa2": "90"
+        },
+        "edu3": {
+            "Uni3": "NIT",
+            "Dep3": "BTEC",
+            "Deg3": "CSE",
+            "Gpa3": "8"
+        }
+    },
+    "Projects": {
+        "pro1": {
+            "ProName1": "pos tagger",
+            "ProDesc1": "this is a pos tagger",
+            "ProGitLink1": "https://www.github.com/icode100/pos",
+            "ProVideo1": "https://drive.google.com/pos"
+        },
+        "pro2": {
+            "ProName2": "translator",
+            "ProDesc2": "This is a translator",
+            "ProGitLink2": "https://www.github.com/icode100/translator",
+            "ProVideo2": "https://drive.google.com/translator"
+        },
+        "pro3": {
+            "ProName3": "Captioner",
+            "ProDesc3": "This is a captioner",
+            "ProGitLink3": "https://www.github.com/icode100/captioner",
+            "ProVideo3": "https://drive.google.com/captioner"
+        }
+    },
+    "Skills": {
+        "s1": {
+            "sk1": "ML",
+            "ss1": 50
+        },
+        "s2": {
+            "sk2": "DL",
+            "ss2": 50
+        },
+        "s3": {
+            "sk3": "AI",
+            "ss3": 50
+        },
+        "s4": {
+            "sk4": "NLP",
+            "ss4": 50
+        },
+        "s5": {
+            "sk5": "CV",
+            "ss5": 50
+        }
+    },
+    "Experience": {
+        "YearsExp": ""
+    },
+    "Company": {
+        "c1": {
+            "Comp1": "",
+            "WorkDesk1": ""
+        },
+        "c2": {
+            "Comp2": "",
+            "WorkDesk2": ""
+        },
+        "c3": {
+            "Comp3": "",
+            "WorkDesk3": ""
+        }
+    }
+}
 
 export default function InfoComponent(){
     const [InfoState,setInfoState] = React.useState({
         Name:"",
         Intro:"",
         Age:0,
-        Nationality:"",
+        Nationality:"hi",
         Email:"",
         Github:"",
         Phone:"",
@@ -77,10 +176,151 @@ export default function InfoComponent(){
             }
         )
     }
-    console.log(InfoState)
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        console.log("i am here")
+        const Profile = {
+                           "Name" : InfoState.Name,
+                           "Profession" : InfoState.Profession,
+                           "Age" : InfoState.Age,
+                           "Nationality": InfoState.Nationality,
+                           "GitHub" : InfoState.Github,
+                           "LinkedIn" : "this is linekdin profile",
+                           "PhoneNo" : InfoState.Phone,
+                        };
+
+        const About = { "NoOfProjects":InfoState.NumProjects, "Awards" : InfoState.Awards, "Intro" : InfoState.Intro}
+
+        const Education = {
+            edu1 : {
+                "Uni1" : InfoState.Uni1,
+                "Dep1" : InfoState.Deg1,
+                "Deg1" : InfoState.Dept1,
+                "Gpa1" : InfoState.GPA1
+            },
+            edu2 : {
+                "Uni2" : InfoState.Uni2,
+                "Dep2" : InfoState.Deg2,
+                "Deg2" : InfoState.Dept2,
+                "Gpa2" : InfoState.GPA2
+            },
+            edu3 : {
+                "Uni3" : InfoState.Uni3,
+                "Dep3" : InfoState.Deg3,
+                "Deg3" : InfoState.Dept3,
+                "Gpa3" : InfoState.GPA3
+
+            }
+        }
+
+        const Projects = {
+            pro1 : {
+                "ProName1" : InfoState.PrNm1,
+                "ProDesc1" : InfoState.PrDesc1,
+                "ProGitLink1" : InfoState.PrGit1,
+                "ProVideo1" : InfoState.PrVid1
+            },
+            pro2 : {
+                "ProName2" : InfoState.PrNm2,
+                "ProDesc2" : InfoState.PrDesc2,
+                "ProGitLink2" : InfoState.PrGit2,
+                "ProVideo2" : InfoState.PrVid2
+            },
+            pro3 : {
+                "ProName3" : InfoState.PrNm3,
+                "ProDesc3" : InfoState.PrDesc3,
+                "ProGitLink3" : InfoState.PrGit3,
+                "ProVideo3" : InfoState.PrVid3
+            }
+        }
+
+        const Skills = {
+            "s1" : {
+                "sk1" : InfoState.Skill1,
+                "ss1" : InfoState.SkillScore1
+            },
+
+            "s2" : {
+                "sk2" : InfoState.Skill2,
+                "ss2" : InfoState.SkillScore2
+            },
+
+            "s3" : {
+                "sk3" : InfoState.Skill3,
+                "ss3" : InfoState.SkillScore3,
+            },
+
+            "s4" : {
+                "sk4" : InfoState.Skill4,
+                "ss4" : InfoState.SkillScore4
+            },
+
+            "s5" : {
+                "sk5" : InfoState.Skill5,
+                "ss5" : InfoState.SkillScore5
+
+            }
+        }
+
+        const Experience = {
+            "YearsExp" : InfoState.YearsExp
+        }
+
+        const Company = {
+            "c1" : {
+                "Comp1" : InfoState.Comp1,
+                "WorkDesk1" : InfoState.WorkDesc1
+            },
+            "c2" : {
+                "Comp2" : InfoState.Comp2,
+                "WorkDesk2" : InfoState.WorkDesc2
+            },
+            "c3" : {
+                "Comp3" : InfoState.Comp3,
+                "WorkDesk3" : InfoState.WorkDesc3
+            }
+        }
+        
+        const data = {
+            "Profile" : Profile,
+            "About" : About,
+            "Education" : Education,
+            "Projects" : Projects,
+            "Skills" : Skills,
+            "Experience" : Experience,
+            "Company" : Company
+        }
+        
+        try {
+          console.log(InfoState)
+          console.log(data)
+          const retrievedToken = Cookies.get('token')
+          let config = {}
+          console.log("hari om tasmath");
+          if(retrievedToken){
+            console.log("yesh")
+            config = {
+                headers: {
+                  'Authorization': `Bearer ${retrievedToken}`
+                }
+            }
+          }
+          const response = await axios.post("http://localhost:5000/portapi/v1/info/submitinfo", temp_data, config, {withCredentials: true});
+          const navigate = useNavigate();
+
+          console.log("data sent successful:", response.data);
+          window.alert("success")
+          setTimeout(() => navigate("/main"), 2000); // Redirect after 2 seconds
+        } catch (error) {
+          console.error("login failed:", error);
+          window.alert("Error occurred")
+        }
+      };
+   
     return (
         <div className="info-component">
-            <form action="" className="info-post">
+            <form action="" className="info-post" onSubmit={handleSubmit}>
                 {/* profile */}
                 <Accordion>
                     <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1-content"id="panel1-header">
@@ -103,8 +343,8 @@ export default function InfoComponent(){
                                         <img
                                           loading="lazy"
                                           width="20"
-                                          srcSet={`https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x`}
-                                          src={`https://flagcdn.com/w20/${option.code.toLowerCase()}.png`}
+                                          srcSet={"https://flagcdn.com/w40/${option.code.toLowerCase()}.png 2x"}
+                                          src={"https://flagcdn.com/w20/${option.code.toLowerCase()}.png"}
                                           alt=""
                                         />
                                         {option.label} ({option.code}) +{option.phone}
@@ -361,6 +601,8 @@ export default function InfoComponent(){
                         </div>
                     </AccordionDetails>
                 </Accordion>
+            <hr />
+            <Button type='submit' variant="contained" color="secondary" endIcon={<SendIcon />} > Submit</Button>
                 
             </form>
             

@@ -26,12 +26,20 @@ const infoRouter = require('./routers/infoRouter')
 const rateLimiter = require('express-rate-limit');
 const helmet = require('helmet');
 const xss = require('xss-clean');
-const cors = require('cors');
 const mongoSanitize = require('express-mongo-sanitize');
+const cors = require('cors')
+// Example using Express (replace with your framework's syntax):
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:5173'); // Replace with your frontend's origin
+  res.header('Access-Control-Allow-Credentials', 'true'); // Allow cookies
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); // Allowed methods
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, x-requested-with'); // Allowed headers
+  next();
+});
+
 
 
 app.use(helmet());
-app.use(cors());
 app.use(xss());
 app.use(mongoSanitize());
 
@@ -42,8 +50,8 @@ app.use(express.json());
 app.use(cookieParser(process.env.JWT_KEY));
 //route middleware
 app.use('/portapi/v1/reglog',authRouter)
-app.use('/portapi/v1/settings',auth_midware,settingsRouter)
-app.use('/portapi/v1/info',auth_midware,infoRouter)
+app.use('/portapi/v1/settings',cors(),auth_midware,settingsRouter)
+app.use('/portapi/v1/info',cors(),auth_midware,infoRouter)
 
 // extra midware
 app.use(errorHandlerMiddleware);

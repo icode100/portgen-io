@@ -58,30 +58,30 @@ const makeInfo = async (req, res) => {
     },
 
     Skills: {
-      Skill1: Skills.sk1,
-      SkillScore1: Skills.ss1,
+      Skill1: Skills.s1.sk1,
+      SkillScore1: Skills.s1.ss1,
 
-      Skill2: Skills.sk2,
-      SkillScore2: Skills.ss2,
+      Skill2: Skills.s2.sk2,
+      SkillScore2: Skills.s2.ss2,
 
-      Skill3: Skills.sk3,
-      SkillScore3: Skills.ss3,
+      Skill3: Skills.s3.sk3,
+      SkillScore3: Skills.s3.ss3,
 
-      Skill4: Skills.sk4,
-      SkillScore4: Skills.ss4,
+      Skill4: Skills.s4.sk4,
+      SkillScore4: Skills.s4.ss4,
 
-      Skill5: Skills.sk5,
-      SkillScore5: Skills.ss5,
+      Skill5: Skills.s5.sk5,
+      SkillScore5: Skills.s5.ss5,
     },
 
     YearsExp: Experience.YearsExp,
     Company: {
       Comp1: Company.c1.Comp1,
       WorkDesk1: Company.c1.WorkDesk1,
-      Comp2: Company.c1.Comp2,
-      WorkDesk2: Company.c1.WorkDesk2,
-      Comp3: Company.c1.Comp3,
-      WorkDesk3: Company.c1.WorkDesk3,
+      Comp2: Company.c2.Comp2,
+      WorkDesk2: Company.c2.WorkDesk2,
+      Comp3: Company.c3.Comp3,
+      WorkDesk3: Company.c3.WorkDesk3,
     },
   });
   res.status(StatusCodes.CREATED).json({ user: { userId: req.user.userId } });
@@ -89,8 +89,11 @@ const makeInfo = async (req, res) => {
 
 
 const getInfo = async (req,res)=>{
-  const info = await Info.findOne({ _id: req.user.userId });
-  res.status(StatusCodes.OK).json({info: info});
+  const query = Info.where({ UserId: req.user.userId });
+  const info = await query.findOne();
+  
+  // const info = await Info.findOne({ _id: req.user.userId });
+  res.status(StatusCodes.OK).json({_id:req.user.userId, email:req.user.email, data:info});
 }
 module.exports = {
   makeInfo,

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState, createContext } from 'react';
 import SettingPage from './components/SettingPage.jsx';
 import HomePage from './components/HomePage.jsx';
 import MainPage from './components/MainPage.jsx';
@@ -14,48 +14,64 @@ import {
   BrowserRouter,
   Navigate,
   Route,
-  Routes
-  
+  Routes,
+  Outlet
+
 } from "react-router-dom";
+import Cookies from 'js-cookie'
+import Portfolio1 from './components/portfolios/Protfolio1.jsx';
+import Portfolio2 from './components/portfolios/Protfolio2.jsx';
+import Portfolio3 from './components/portfolios/Portfolio3.jsx';
 
 
+
+function Portfolio_base(){
+  return(
+    <Outlet/>
+  )
+}
 
 function App() {
+
   let data = [
     {
-      title:"Software eng",
-      images:[pic1, pic2, pic3],
-      urls : ["http://localhost:5173/softWareEng/port1", "http://localhost:5173/softWareEng/port2", "http://localhost:5173/softWareEng/port3"]
+      title: "Software eng",
+      images: [pic1, pic2, pic3],
+      urls: ["http://localhost:5173/portfolio/port1", "http://localhost:5173/portfolio/port2", "http://localhost:5173/portfolio/port3"]
     },
     {
-      title:"Fasion designer",
-      images:[pic1, pic2, pic3],
-      urls : ["http://localhost:5173/softWareEng/port1", "http://localhost:5173/softWareEng/port2", "http://localhost:5173/softWareEng/port3"]
+      title: "Fasion designer",
+      images: [pic1, pic2, pic3],
+      urls: ["http://localhost:5173/portfolio/port1", "http://localhost:5173/portfolio/port2", "http://localhost:5173/portfolio/port3"]
     },
     {
-      title:"Fasion designer",
-      images:[pic1, pic2, pic3],
-      urls : ["http://localhost:5173/softWareEng/port1", "http://localhost:5173/softWareEng/port2", "http://localhost:5173/softWareEng/port3"]
+      title: "Fasion designer",
+      images: [pic1, pic2, pic3],
+      urls: ["http://localhost:5173/portfolio/port1", "http://localhost:5173/portfolio/port2", "http://localhost:5173/portfolio/port3"]
     }
   ]
+  const isvalidated = Cookies.get('token') === undefined;
+
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<HomePage/>} />
-          <Route path='/reglog' element={<RegisterLogin/>}>
-            <Route path='login' element={<Login/>}/>
-            <Route path='register' element={<Register/>}/>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/reglog' element={<RegisterLogin />}>
+            <Route path='login' element={<Login />} />
+            <Route path='register' element={<Register />} />
           </Route>
-          <Route path='/main' element={<MainPage data={data}/>} />
-          <Route path='/info' element={<InfoPage/>} />
-          <Route path='/settings' element={<SettingPage/>} />
-          <Route path='/logout' element={<HomePage/>} />
-          {/* <Route path = '/softWareEng/port1' element = {<Webd1/>}/> */}
-          {/* <Route path = '/softWareEng/port2' element = {<Webd2/>}/> */}
-          {/* <Route path = '/softWareEng/port3' element = {<Webd3/>}/> */}
+          <Route path='/main' element={isvalidated ? <Navigate to="/" /> : <MainPage data={data} />} />
+          <Route path='/info' element={isvalidated ? <Navigate to="/" /> : <InfoPage />} />
+          <Route path='/settings' element={isvalidated ? <Navigate to="/" /> : <SettingPage />} />
+          <Route path='/logout' element={<HomePage />} />
+          <Route path='/portfolio' element={<Portfolio_base/>}>
+            <Route path='port2' element={<Portfolio2 />} />
+            <Route path='port3' element={<Portfolio3 />} />
+            <Route path='port1' element={<Portfolio1 />} />
+          </Route>
         </Routes>
-      </BrowserRouter> 
+      </BrowserRouter>
     </>
   )
 }

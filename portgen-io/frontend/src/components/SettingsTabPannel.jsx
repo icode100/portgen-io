@@ -55,17 +55,13 @@ export default function SettingsTabPannel() {
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
             <Tab label="Change Email" {...a11yProps(0)} />
-            <Tab label="Change Username" {...a11yProps(1)} />
-            <Tab label="Change Password" {...a11yProps(2)} />
+            <Tab label="Change Password" {...a11yProps(1)} />
           </Tabs>
         </Box>
         <CustomTabPanel value={value} index={0}>
           <SettingEmail/>
         </CustomTabPanel>
         <CustomTabPanel value={value} index={1}>
-          <SettingUser/>
-        </CustomTabPanel>
-        <CustomTabPanel value={value} index={2}>
           <SettingPass/>
         </CustomTabPanel>
       </Stack>

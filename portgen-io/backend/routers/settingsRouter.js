@@ -3,9 +3,9 @@ const router = express.Router()
 
 const {changeEmail, changePassword, changeUserName} = require('../controllers/settingsController')
 
-router.route('/changeMail').post(changeEmail)
-router.route('/changePass').post(changePassword)
-router.route('/changeUser').post(changeUserName)
+router.route('/changemail').post(changeEmail)
+router.route('/changepass').post(changePassword)
+router.route('/changeuser').post(changeUserName)
 
 
 module.exports = router
