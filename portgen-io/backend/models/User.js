@@ -30,14 +30,8 @@ const User = new mongoose.Schema({
     }
 })
 
-User.pre('save',async function(){
-    if(!this.isModified("Password")) return;
-    const salt  = await bcrypt.genSalt(10);
-    this.Password = await bcrypt.hash(this.Password,salt);
-})
-
 User.methods.checkPassword = async function (inputPassword){
-    console.log(inputPassword)
+    console.log(inputPassword, "in side the checkpassword method")
     const result = await bcrypt.compare(inputPassword,this.Password);
     return result;
 }

@@ -1,21 +1,21 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import Logo from "../../assets/image 8extra2.png";
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import './style3.css'
-
+import Cookies from 'js-cookie'
 function NavBar(props){
     function changeDis(event){
         const targetId = event.target.id
         var component = null
         if (targetId === 'Home') {
-            component = <Home />;
+            component = <Home Name={props.name} desc={props.desc}/>;
         } else if (targetId === 'Education') {
-            component = <Education />;
+            component = <Education Education={props.Education} Skills={props.Skills}/>;
         } else if (targetId === 'Projects') {
-            component = <Projects />;
+            component = <Projects Projects={props.Projects}/>;
         } else if (targetId === 'WorkExp') {
-            component = <WorkExp />;
+            component = <WorkExp Company={props.Company}/>;
         }
         props.setComponent(component)
     }
@@ -29,39 +29,38 @@ function NavBar(props){
             <div className='port3__lower'>
                 <h6 id='Home' onClick={changeDis} >Home</h6>
                 <h6 id='Education' onClick={changeDis} > Edu & skills</h6>
-                <h6 id='Projects' onClick={changeDis} >Prev experiences</h6>
-                <h6 id='WorkExp' onClick={changeDis}>Projects</h6>
+                <h6 id='WorkExp' onClick={changeDis} >Prev experiences</h6>
+                <h6 id='Projects' onClick={changeDis}>Projects</h6>
             </div>
             <div className="web3__footer">
                 <div className='web3__footerComp'>
                     <span className='web3__footerCamp_head'>Email</span>
-                    <p>{props.email}krishna@gmail.com</p>
+                    <p>{props.email}</p>
                 </div>
                 <div className='web3__footerComp'>
                     <span className='web3__footerCamp_head'>GitHub</span>
-                    <p>{props.github}https/radhakrishna/brindavan.com</p>
+                    <p>{props.github}</p>
                 </div>
                 <div className='web3__footerComp'>
                     <span className='web3__footerCamp_head'>LinkedIn</span>
-                    <p>{props.LinkedIn}https:/inlindekein/com</p>
+                    <p>{props.LinkedIn}</p>
                 </div>
                 <div className='web3__footerComp'>
                     <span className='web3__footerCamp_head'>Phone no</span>
-                    <p>{props.phoneno}+91 9553777142</p>
+                    <p>{props.phoneno}</p>
                 </div>
             </div>
         </div>
     )
 }
 
-function Home(){
+function Home(props){
     return(
-        <div className='port3__home'>
+        <div style={{width:"30vw"}} className='port3__home'>
             <div className='port3__home_out'> 
                 <div className='port3__rightHome'>
-                    <h1>Ipsit Das</h1>
-                    <p>A friendly "get to know me" blurb</p>
-                    <p>u r bad.. the song is too bad.. koyi isko song bhi bolta hain hi hel dhlak hahdl akddlaa he is not good at all</p>
+                    <h1>{props.Name}</h1>
+                    <p>{props.desc}</p>
                 </div>
                 <div className='port3__leftHome'>
                     <img src={Logo} alt="" />
@@ -73,27 +72,31 @@ function Home(){
 
 function Project(props){
     return (
-        <div className='port3__project'>
-          <div className="port3__proj__upper">
-              <h2>{props.title}Chocolate detection</h2>
-              <p> &nbsp; &nbsp; {props.desc} First impressions have been rescheduled: they’re made way before meeting in person, saving plenty of time and effort for all parties. And digital portfolios are part of this shift. More and more fields are beginning to embrace them as an accurate reflection of who you are as a professional. And so, they’re becoming the new standard: something that’s expected of those who take their career seriously.</p>
+        <div style={{width:"50vw"}}className='port3__project'>
+          <div className="port3_proj_upper">
+              <h2>{props.title}</h2>
+              <p> &nbsp; &nbsp; {props.desc}</p>
           </div>
-          <div className="port3__proj__lower">
-              <a href="www.google.com" className='lower_a'>Video-Link</a>
-              <a href="www.google.com" className='lower_a'>GitHub-Link</a>
+          <div className="port3_proj_lower">
+              <a href={props.videoLink} className='lower_a'>Video-Link</a>
+              <a href={props.github} className='lower_a'>GitHub-Link</a>
           </div>
       </div>
     )
 }
 
 function Projects(props){
+    const ProjectH = []
+    const ProjectData = props.Projects
+    for(let i = 1; i <= 3; i++) {
+        ProjectH.push(<Project title={ProjectData[`ProName${i}`]} desc={ProjectData[`ProDesc${i}`]} videoLink={ProjectData[`ProVideo${i}`]} github={ProjectData[`ProGitLink${i}`]}/>);
+    }
+
     return (
         <div className='port3__projects'>
             <h1>My Projects</h1>
             <div className='port3__projects_inside'>
-                <Project/>
-                <Project/>
-                <Project/>
+                {ProjectH}
             </div>
         </div>
     )
@@ -102,20 +105,26 @@ function Projects(props){
 function Exp(props){
     return (
         <div className='port3__company'>
-          <h3>{props.title} Amul dark chocolate</h3>
-          <p> &nbsp; &nbsp;{props.desc} First impressions have been rescheduled: they’re made way before meeting in person, saving plenty of time and effort for all parties. And digital portfolios are part of this shift. More and more fields are beginning to embrace them as an accurate reflection of who you are as a professional. And so, they’re becoming the new standard: something that’s expected of those who take their career seriously.</p>
+          <h3>{props.title} </h3>
+          <p> &nbsp; &nbsp;{props.desc} </p>
         </div>
     )
 }
 
 function WorkExp(props){
+    const Company = []
+    console.log(props)
+    const CompanyData = props.Company
+    for(let i = 0; i < CompanyData.length; i++) {
+        if(CompanyData[i][0] !== ""){
+           Company.push(<Exp title = {CompanyData[i][0]} desc = {CompanyData[i][1]}/>);
+        }
+    }
     return(
         <div className='port3__workExp'>
             <h1>My Work Experinces</h1>
             <div className='port3__workExp_inside'>
-                <Exp/>
-                <Exp/>
-                <Exp/>
+                {Company}
             </div>
         </div>      
     )
@@ -124,41 +133,52 @@ function WorkExp(props){
 function EducationPart(props){
     return (
         <div className='port3__eduPart'>
-            <p>{props.class}Btech &nbsp; {props.clg}Nit AP </p>
-            <p>{props.gpa} 10.0 CGPA</p>
+            <p>{props.class} &nbsp; {props.clg}</p>
+            <p>{props.gpa} </p>
         </div>
     )
 }
 
 function Education(props){
+    const EducationH = []
+    const EducationData = props.Education
+   
+    for(let i = 1;i<=3; i++){
+        EducationH.push(<EducationPart class= {EducationData[`Dep${i}`]} clg={EducationData[`Uni${i}`]} gpa={EducationData[`Gpa${i}`]}/>);
+    }
+ 
+    
+
+    const SkillH = []
+    const SkillData = props.Skills
+    console.log(SkillData)
+    for(let i = 1;i<=3; i++){
+        SkillH.push(<Skills title = {SkillData[`Skill${i}`]} value ={SkillData[`SkillScore${i}`]} />);
+    }
+    
+
     return (
-        <div className='port3__edu__top'>
+        <div className='port3_edu_top'>
             <div className='port3__edu'>
                 <h1>My Education</h1>
                 <div>
-                    <EducationPart/>
-                    <EducationPart/>
-                    <EducationPart/>
+                    {EducationH}
                 </div>
             </div>
             <div className='port3__skill'>
-                <h1>My skill set</h1>
+                <h1>My Skills set</h1>
                 <div className='port3__skill_inside'> 
-                    <Skill/>
-                    <Skill/>
-                    <Skill/>
-                    <Skill/>
-                    <Skill/>
+                    {SkillH}
                 </div>
             </div>
         </div>
     ) 
 }
 
-function Skill(props) {
+function Skills(props) {
     return (
       <div className='port3__skillClass'>
-          <p>{props.title} Eating</p>
+          <p>{props.title}</p>
           <div className='port3__skillClass_div'>
             <CircularProgressbar value = {props.value} styles={{
                 trail : {
@@ -167,7 +187,7 @@ function Skill(props) {
                 background : {
                     fill: 'black',
                 },
-                pathColor: `rgba(62, 152, 199, 1)`,
+                pathColor: 'rgba(255,255,255,0)',
             }}/>
           </div>
       </div>
@@ -176,14 +196,51 @@ function Skill(props) {
 
 export default function Webd3() {
     const [activeComponent, setActiveComponent] = useState(null);
-
+    const [props,setprops] = useState({});
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    
+      useEffect(() => {
+        const fetchData = async () => {
+            setLoading(true);
+          
+            try {
+              token = Cookies.get('token');
+              console.log(token)
+              if (!token) {
+                throw new Error('Invalid token');
+              }
+              const config = {
+                method: 'GET',
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              
+              };
+              const response = await fetch('http://localhost:5000/portapi/v1/info/getinfo', config);
+              if (!response.ok) {
+                throw new Error(`Error fetching data: ${response.statusText}`);
+              }
+              const data = await response.json();
+              setprops(data.data);
+            } catch (error) {
+              setError(error);
+            } finally {
+              setLoading(false);
+            }
+          };
+          
+          
+          fetchData();
+      }, []);
+    //   console.log(props)
   return (
     <div className='web3'>
         <div className='web3_left'>
-            <NavBar setComponent={setActiveComponent}/>
+        <NavBar setComponent={setActiveComponent} Education={props.Education} Company={props.Company} Skills={props.Skills} Projects={props.Projects} name={props.Name} desc={props.Intro} email={props.Email} github={props.GitHub} phoneno={props.PhoneNo} Linkedin={props.LinkedIn}/>
         </div>
         <div className='web3_right'>
-           {activeComponent || <Home/>}
+           {activeComponent || <Home Name={props.name} desc={props.desc}/>}
         </div>
     </div>
   )

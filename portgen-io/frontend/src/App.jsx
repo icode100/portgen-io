@@ -29,17 +29,20 @@ function App() {
     {
       title:"Software eng",
       images:[pic1, pic2, pic3],
-      urls : ["http://localhost:5173/softWareEng/port1", "http://localhost:5173/softWareEng/port2", "http://localhost:5173/softWareEng/port3"]
+      urls : ["http://localhost:5173/softWareEng/port1", "http://localhost:5173/softWareEng/port2", "http://localhost:5173/softWareEng/port3"],
+      components : [Webd1, Webd2, Webd3]
     },
     {
       title:"Fasion designer",
       images:[pic1, pic2, pic3],
-      urls : ["http://localhost:5173/softWareEng/port1", "http://localhost:5173/softWareEng/port2", "http://localhost:5173/softWareEng/port3"]
+      urls : ["http://localhost:5173/softWareEng/port1", "http://localhost:5173/softWareEng/port2", "http://localhost:5173/softWareEng/port3"],
+      components : [Webd1, Webd2, Webd3]
     },
     {
       title:"Fasion designer",
       images:[pic1, pic2, pic3],
-      urls : ["http://localhost:5173/softWareEng/port1", "http://localhost:5173/softWareEng/port2", "http://localhost:5173/softWareEng/port3"]
+      urls : ["http://localhost:5173/softWareEng/port1", "http://localhost:5173/softWareEng/port2", "http://localhost:5173/softWareEng/port3"],
+      components : [Webd1, Webd2, Webd3]
     }
   ]
   return (
@@ -52,10 +55,10 @@ function App() {
             <Route path='register' element={<Register/>}/>
           </Route>
           <Route path='/main' element={<MainPage data={data}/>} />
-          {/* <Route path='/info' element={<InfoPage/>} /> */}
+          <Route path='/info' element={<InfoPage/>} />
           <Route path='/settings' element={<SettingPage/>} />
           <Route path='/logout' element={<HomePage/>} />
-          <Route path = '/softWareEng/port1' element = {<Webd1/>}/>
+          <Route path = '/softWareEng/port1' element = {<Webd1 />}/>
           <Route path = '/softWareEng/port2' element = {<Webd2/>}/>
           <Route path = '/softWareEng/port3' element = {<Webd3/>}/>
         </Routes>

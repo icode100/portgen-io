@@ -7,7 +7,7 @@ export default function MainPgPortCatSet(props) {
     let images = props.images;
     let urls = props.url;
     for(let i = 0; i < props.images.length; i++) {
-        components.push(<Portfolio key={i} img={images[i]} url={urls[i]}/>);
+        components.push(<Portfolio key={i} img={images[i]} url={urls[i]} component = {props.components[i]}/>);
     }
     // console.log(props.images);
     return (

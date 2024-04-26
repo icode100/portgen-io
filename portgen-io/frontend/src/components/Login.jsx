@@ -8,6 +8,9 @@ import PersonIcon from "@mui/icons-material/Person";
 import { useNavigate } from "react-router-dom";
 import { Alert, Snackbar } from "@mui/material";
 import axios from 'axios'
+import Cookies from 'js-cookie'
+
+
 export default function Login() {
   const [loginState, setLoginState] = React.useState({
     Email: "",
@@ -33,11 +36,8 @@ export default function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("i am here")
-    
     try {
-      console.log(loginState)
-      const response = await axios.post("/portapi/v1/reglog/login", loginState);
+      const response = await axios.post("http://localhost:5000/portapi/v1/reglog/login", loginState, {withCredentials: true});
       console.log("login successful:", response.data);
       setOpenAlert(true);
       setAlertSeverity("success"); // Set success severity
@@ -67,14 +67,14 @@ export default function Login() {
           type="email"
           name="Email"
           className="login-form-email"
-          placeholder={`Enter your Email ✉️`}
+          placeholder={"Enter your Email ✉"}
           onChange={HandleChange}
         />
         <input
           type="password"
           name="Password"
           className="login-form-password"
-          placeholder={`Enter Your Password 🔑`}
+          placeholder={"Enter Your Password 🔑"}
           onChange={HandleChange}
         />
         <button type="submit" className="login-form-submit">

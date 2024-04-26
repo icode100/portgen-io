@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 export default function AnimatedText() {
     const [displayText, setDisplayText] = useState('');
     let index = 0;
-    let text = `H+ELLO NAME`;
+    let text = `H+ELLO IPSIT DAS`;
 
     useEffect(() => {
         const timer = setInterval(() => {

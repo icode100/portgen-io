@@ -66,8 +66,8 @@ function Project(props) {
               <p> &nbsp; &nbsp; {props.desc}</p>
           </div>
           <div className="lower" style = {projectwebd_div}>
-              <a href="www.google.com" style = {lower_a}>Video-Link</a>
-              <a href="www.google.com" style = {lower_a}>GitHub-Link</a>
+              <a href={props.videoLink} style = {lower_a}>Video-Link</a>
+              <a href={props.gitHubLink} style = {lower_a}>GitHub-Link</a>
           </div>
       </div>
     )
@@ -215,7 +215,39 @@ export default function Webd1(props) {
     const in_webd1 = {
         // backgroundColor: '#AA94D7'
     }
+
+    const Education = []
+    const EducationData = props.Education
+    for(let i = 0; i < EducationData.length; i++) {
+        if(EducationData[i][0] !== ""){
+           Education.push(<Education class={EducationData[i][0]} clg={EducationData[i][1]} gpa={Education[i][2]}/>);
+        }
+    }
     
+    const Project = []
+    const ProjectData = props.Project
+    for(let i = 0; i < ProjectData.length; i++) {
+        if(ProjectData[i][0] !== ""){
+           Project.push(<Project title={ProjectData[i][0]} desc={ProjectData[i][1]} videoLink={ProjectData[i][2]} gitHubLink={ProjectData[i][3]}/>);
+        }
+    }
+
+    const Skill = []
+    const SkillData = props.Skill
+    for(let i = 0; i < SkillData.length; i++) {
+        if(SkillData[i][0] !== ""){
+           Skill.push(<Skill title = {SkillData[i][0]} value = {SkillData[i][1]}/>);
+        }
+    }
+
+    const Company = []
+    const CompanyData = props.Company
+    for(let i = 0; i < CompanyData.length; i++) {
+        if(CompanyData[i][0] !== ""){
+           Company.push(<Company title = {CompanyData[i][0]} desc = {CompanyData[i][1]}/>);
+        }
+    }
+
     
   return (
     <div className='in_webd1' style = {in_webd1}> 
@@ -226,31 +258,29 @@ export default function Webd1(props) {
         <p className='desc' style={desc}>Hey, this is {props.name} in my journey of crafting the unseen power behind every click!!</p>
        <div className='total-info' style = {total_info}>
             <img src={Back} alt="" style = {total_info_img}/>
-            <p class="about" style = {about}>About Me</p>
+            <p class="about" style = {about}>{desc}</p>
             <div className="info" style={info}>
                 <div className="in-info" style = {in_info}>
                     <div className="eduction" >
-                        <Education class="Nursery" clg="Amma lap" gpa={10}/>
-                        <Education class="Nursery" clg="Amma lap" gpa={10}/>
-                        <Education class="Nursery" clg="Amma lap" gpa={10}/>
+                        {Education}
                     </div>
                 </div>
                 <div className='personal in-info'>
                     <div style = {personal_div}>
                         <p>Phone No:</p>
-                        <p>+91 - 9553777142</p>
+                        <p>{props.phoneNo}</p>
                     </div>
                     <div style = {personal_div}>
                         <p>GitHub link</p>
-                        <p>link bro yaha</p>
+                        <p>{props.gitHub}</p>
                     </div>
                     <div style = {personal_div}>
-                        <p>Twitter</p>
-                        <p>link bro yaha</p>
+                        <p>Email</p>
+                        <p>{props.email}</p>
                     </div>
                     <div style = {personal_div}>
                         <p>Nationality</p>
-                        <p>Indian</p>
+                        <p>{props.Nationality}</p>
                     </div>
                 </div>
             </div>
@@ -261,9 +291,7 @@ export default function Webd1(props) {
                 <p style = {proDescHead_p}>Projects</p>
             </div>
             <div className="proTot" style = {proTot}>
-                <Project title="Chocolate Maker" desc="This is world famous chocolate maker u can find"/>
-                <Project title="Chocolate Maker" desc="This is world famous chocolate maker u can find"/>
-                <Project title="Chocolate Maker" desc="This is world famous chocolate maker u can find"/>
+                {Project}
             </div>
         </div>
 
@@ -272,11 +300,7 @@ export default function Webd1(props) {
                 <h2 style={skillsSet_h2}>Skills</h2>
             </div>
             <div className="skillsTot" style = {skillsTot}>
-                <Skill title = {"Eating"} value = {10}/>
-                <Skill title = {"Eating"} value = {10}/>
-                <Skill title = {"Eating"} value = {10}/>
-                <Skill title = {"Eating"} value = {10}/>
-                <Skill title = {"Eating"} value = {10}/>                
+                {Skill}               
             </div>
         </div>
 
@@ -285,9 +309,7 @@ export default function Webd1(props) {
                 <h2 style = {companyHead_h2}>Previous Experiences</h2>
             </div>
             <div className="companyTot" style = {companyTot}>
-                <Company title = {"Amul"} desc = {"The best place i have worked..learnt how to eat more"}/>
-                <Company title = {"Amul"} desc = {"The best place i have worked..learnt how to eat more"}/>  
-                <Company title = {"Amul"} desc = {"The best place i have worked..learnt how to eat more"}/>  
+                {Company}  
             </div>
         </div>
     </div>

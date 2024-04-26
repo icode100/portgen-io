@@ -1,28 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Logo from "../../assets/image 8extra2.png";
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import './style.css'
-
+import Cookies from 'js-cookie'
 function NavBar(props){
     function changeDis(event){
         const targetId = event.target.id
         var component = null
         if (targetId === 'Home') {
-            component = <Home />;
+            component = <Home Name={props.name} desc={props.desc}/>;
         } else if (targetId === 'Education') {
-            component = <Education />;
+            component = <Education Education={props.Education} Skills={props.Skills}/>;
         } else if (targetId === 'Projects') {
-            component = <Projects />;
+            component = <Projects Project={props.Project}/>;
         } else if (targetId === 'WorkExp') {
-            component = <WorkExp />;
+            component = <WorkExp Company={props.Company}/>;
         }
         props.setComponent(component)
     }
     
     return (
        <div className = 'navBar' > 
-        <h4>Hi guys, This is Ipsit!!</h4>
+        <h4>Hi guys, This is {props.name}!!</h4>
         <div className = 'links' >
             <div className = 'link' id='Home' onClick={changeDis} >Home</div>
             <div className = 'link' id='Education' onClick={changeDis} >Edu & skills</div>
@@ -35,15 +35,15 @@ function NavBar(props){
 
 function Home(props){
     return (
-        <div className='home'>
+        <div style={{width:"80vw"}} className='home'>
             <div className='home_out'> 
                 <div className='leftHome'>
                     <img src={Logo} alt="" />
                 </div>
                 <div className='rightHome'>
-                    <h1>Ipsit Das</h1>
-                    <p>A friendly "get to know me" blurb</p>
-                    <p>u r bad.. the song is too bad.. koyi isko song bhi bolta hain hi hel dhlak hahdl akddlaa he is not good at all</p>
+                    <h1>{props.Name}</h1>
+                    
+                    <p>{props.desc}</p>
                 </div>
             </div>
         </div>
@@ -54,20 +54,20 @@ function Footer(props){
     return(
         <div className="footer">
             <div className='footerComp'>
-                <span class='footerCamp_head'>Email</span>
-                <p>{props.email}krishna@gmail.com</p>
+                <span className='footerCamp_head'>Email</span>
+                <p>{props.email}</p>
             </div>
             <div className='footerComp'>
-                <span class='footerCamp_head'>GitHub</span>
-                <p>{props.github}https/radhakrishna/brindavan.com</p>
+                <span className='footerCamp_head'>GitHub</span>
+                <p>{props.github}</p>
             </div>
             <div className='footerComp'>
-                <span class='footerCamp_head'>LinkedIn</span>
-                <p>{props.LinkedIn}https:/inlindekein/com</p>
+                <span className='footerCamp_head'>LinkedIn</span>
+                <p>{props.LinkedIn}</p>
             </div>
             <div className='footerComp'>
-                <span class='footerCamp_head'>Phone no</span>
-                <p>{props.phoneno}+91 9553777142</p>
+                <span className='footerCamp_head'>Phone no</span>
+                <p>{props.phoneno}</p>
             </div>
         </div>
     )
@@ -76,38 +76,48 @@ function Footer(props){
 function EducationPart(props){
     return (
         <div className='eduPart'>
-            <p>{props.class}Btech &nbsp; {props.clg}Nit AP </p>
-            <p>{props.gpa} 10.0 CGPA</p>
+            <p>{props.class} &nbsp; {props.clg} </p>
+            <p>{props.gpa} </p>
         </div>
     )
 }
 
 function Education(props){
+    const EducationH = []
+    const EducationData = props.Education
+    console.log(EducationData)
+    for(let i = 1; i <= 3; i++) {
+        
+           EducationH.push(<EducationPart class= {EducationData[`Dep${i}`]} clg={EducationData[`Uni${i}`]} gpa={EducationData[`Gpa${i}`]}/>);
+        
+    }
+
+    const SkillH = []
+    const SkillData = props.Skills
+    for(let i = 1; i <= 3; i++) {
+   
+           SkillH.push(<Skills title = {SkillData[`Skill${i}`]} value ={SkillData[`SkillScore${i}`]}/>);
+        
+    }
     return (
         <div>
             <div className='edu'>
                 <h1>My Education</h1>
                 <div>
-                    <EducationPart/>
-                    <EducationPart/>
-                    <EducationPart/>
+                    {EducationH}
                 </div>
             </div>
             <div className='skill'>
                 <h1>My skill set</h1>
                 <div className='skill_inside'> 
-                    <Skill/>
-                    <Skill/>
-                    <Skill/>
-                    <Skill/>
-                    <Skill/>
+                  {SkillH}
                 </div>
             </div>
         </div>
     ) 
 }
 
-function Skill(props) {
+function Skills(props) {
     return (
       <div className='skillClass'>
           <p>{props.title} Eating</p>
@@ -119,7 +129,7 @@ function Skill(props) {
                 background : {
                     fill: 'black',
                 },
-                pathColor: `rgba(62, 152, 199, 1)`,
+                pathColor: 'rgba(62, 152, 199, 1)',
             }}/>
           </div>
       </div>
@@ -130,12 +140,12 @@ function Project(props){
     return (
         <div className='project'>
           <div className="upper">
-              <h2>{props.title}Chocolate detection</h2>
-              <p> &nbsp; &nbsp; {props.desc} First impressions have been rescheduled: they’re made way before meeting in person, saving plenty of time and effort for all parties. And digital portfolios are part of this shift. More and more fields are beginning to embrace them as an accurate reflection of who you are as a professional. And so, they’re becoming the new standard: something that’s expected of those who take their career seriously.</p>
+              <h2>{props.title}</h2>
+              <p> &nbsp; &nbsp; {props.desc}</p>
           </div>
           <div className="lower">
-              <a href="www.google.com" className='lower_a'>Video-Link</a>
-              <a href="www.google.com" className='lower_a'>GitHub-Link</a>
+              <a href={props.videoLink} className='lower_a'>Video-Link</a>
+              <a href={props.github} className='lower_a'>GitHub-Link</a>
           </div>
       </div>
     )
@@ -143,13 +153,19 @@ function Project(props){
 }
 
 function Projects(props){
+    const ProjectH = []
+    const ProjectData = props.Project
+    
+    for(let i = 1; i <= 3; i++) {
+
+           ProjectH.push(<Project title={ProjectData[`ProName${i}`]} desc={ProjectData[`ProDesc${i}`]} videoLink={ProjectData[`ProVideo${i}`]} github={ProjectData[`ProGitLink${i}`]}/>);
+        
+    }
     return (
         <div className='projects'>
             <h1>My Projects</h1>
             <div className='projects_inside'>
-                <Project/>
-                <Project/>
-                <Project/>
+             {ProjectH}
             </div>
         </div>
     )
@@ -158,20 +174,25 @@ function Projects(props){
 function Exp(props){
     return (
         <div className='company'>
-          <h3>{props.title} Amul dark chocolate</h3>
-          <p> &nbsp; &nbsp;{props.desc} First impressions have been rescheduled: they’re made way before meeting in person, saving plenty of time and effort for all parties. And digital portfolios are part of this shift. More and more fields are beginning to embrace them as an accurate reflection of who you are as a professional. And so, they’re becoming the new standard: something that’s expected of those who take their career seriously.</p>
+          <h3>{props.title} hi</h3>
+          <p> &nbsp; &nbsp;{props.desc} hi</p>
         </div>
     )
 }
 
 function WorkExp(props){
+    const Company = []
+    const CompanyData = props.Company
+    for(let i = 0; i < CompanyData.length; i++) {
+        if(CompanyData[i][0] !== ""){
+           Company.push(<Exp title = {CompanyData[i][0]} desc = {CompanyData[i][1]}/>);
+        }
+    }
     return(
         <div className='workExp'>
             <h1>My Work Experinces</h1>
             <div className='workExp_inside'>
-                <Exp/>
-                <Exp/>
-                <Exp/>
+                {Company}
             </div>
         </div>      
     )
@@ -179,13 +200,53 @@ function WorkExp(props){
 
 
 export default function Webd2() {
-  const [activeComponent, setActiveComponent] = useState(null);
+    const [activeComponent, setActiveComponent] = useState(null);
+    const [props,setprops] = useState({});
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    
+      useEffect(() => {
+        const fetchData = async () => {
+            setLoading(true);
+          
+            try {
+               token = Cookies.get('token');
+            
+              if (!token) {
+                throw new Error('Invalid token');
+              }
+              const config = {
+                method: 'GET',
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              
+              };
+              const response = await fetch('http://localhost:5000/portapi/v1/info/getinfo', config);
+              if (!response.ok) {
+                throw new Error(`Error fetching data: ${response.statusText}`);
+              }
+              const data = await response.json();
+              setprops(data.data);
+            } catch (error) {
+              setError(error);
+            } finally {
+              setLoading(false);
+            }
+          };
+          
+          
+          fetchData();
+      }, []);
+      console.log(props)
+
 
   return (
     <div className='webd2'>
-        <NavBar setComponent={setActiveComponent}/>
-        {activeComponent || <Home/>}
-        <Footer/>
+        <NavBar setComponent={setActiveComponent} Education={props.Education} Company={props.Company} Skills={props.Skills} Project={props.Projects} name={props.Name} desc={props.Intro}/>
+        {activeComponent || <Home Name={props.Name} desc={props.Intro}/>}
+        <Footer email={props.Email} github={props.GitHub}
+        LinkedIn={props.LinkedIn} phoneno={props.PhoneNo}/>
     </div>
   )
 }

@@ -10,8 +10,7 @@ import Prop4 from "../assets/Vector 26.svg";
 import "../style.css";
 import profile from '../assets/image_extra1.png'
 import NavIcon from './NavIcon';
-// data : [{title:
-//          images:}]
+
 
 
 
@@ -19,7 +18,7 @@ export default function MainPage(props) {
   let data = props.data;
   let totalSets = [];
   for(let i = 0; i < data.length; i++) {
-    totalSets.push(<PortfolioCat key={i} title={data[i].title} images={data[i].images} url={data[i].urls} />);
+    totalSets.push(<PortfolioCat key={i} title={data[i].title} images={data[i].images} url={data[i].urls} components = {data[i].components}  />);
   }
 
   return (

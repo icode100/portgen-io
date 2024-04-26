@@ -2,7 +2,7 @@ const bcrypt = require("bcryptjs");
 const User = require("../models/User");
 const { StatusCodes } = require("http-status-codes");
 const { BadRequestError, UnauthenticatedError } = require("../errors");
-const oneDay = 1000 * 60 * 5;
+const oneDay = 1000 * 60 * 60 * 24;
 
 
 
@@ -32,7 +32,7 @@ const register = async (req, res) => {
 
 // login user
 const login = async (req, res) => {
-  console.log("this is me")
+  console.log("this is me print this idiot print this")
   console.log(req.body)
   const { Email, Password } = req.body;
   if (!Email || !Password) throw new BadRequestError("incomplete credentials");
@@ -42,29 +42,26 @@ const login = async (req, res) => {
   const isPass = await user.checkPassword(Password);
   if (!isPass) throw new UnauthenticatedError("invalid credentials");
   const token = user.createToken();
-  res
-    .cookie('token', token, {
-      httpOnly: true,
-      expires: new Date(Date.now() + oneDay),
-      secure: process.env.NODE_ENV === "production",
-      // sameSite:"Lax",
-      signed: true,
-    });
+  res.cookie('token', token, {
+    httpOnly: true,
+    expires: new Date(Date.now() + oneDay),
+    secure: process.env.NODE_ENV === 'production',
+    signed: true,
+  });
   res
     .status(StatusCodes.OK)
     .json({ user: { name: user.UserName, email: user.Email }, token: token });
-
+  
 };
 
 // logout
 const logout = async (req, res) => {
   res.cookie("token", "logout", {
     httpOnly: true,
-    expires: new Date(0), // Set to a past date
+    expires: new Date(Date.now() + 1000),
   });
   res.status(StatusCodes.OK).json({ msg: "user logged out!" });
 };
-
 
 
 module.exports = {
