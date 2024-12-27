@@ -42,7 +42,7 @@ export default function Register() {
     console.log(registerState)
 
     try { 
-      const response = await axios.post("http://localhost:5000/portapi/v1/reglog/register", registerState);
+      const response = await axios.post("https://portgen-io.vercel.app/portapi/v1/reglog/register", registerState);
       console.log("Registration successful:", response.data);
       localStorage.setItem("portGentoken", response.data.token);
       setOpenAlert(true);

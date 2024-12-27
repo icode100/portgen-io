@@ -28,8 +28,16 @@ const xss = require('xss-clean');
 const mongoSanitize = require('express-mongo-sanitize');
 const cors = require('cors')
 // Example using Express (replace with your framework's syntax):
+app.use(cors(
+  {
+    origin:["https://portgen-io-main.vercel.app/"],
+    methods:["POST","GET", "PUT", "DELETE", "OPTIONS"],
+    credentials: true,
+  }
+))
+
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:5173'); // Replace with your frontend's origin
+  res.header('Access-Control-Allow-Origin', 'https://portgen-io-main.vercel.app/'); // Replace with your frontend's origin
   res.header('Access-Control-Allow-Credentials', 'true'); // Allow cookies
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS'); // Allowed methods
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, x-requested-with'); // Allowed headers

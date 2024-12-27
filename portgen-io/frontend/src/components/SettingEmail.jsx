@@ -22,7 +22,7 @@ export default function SettingEmail() {
         event.preventDefault();
       
         try {
-          const url = "http://localhost:5000/portapi/v1/settings/changemail";
+          const url = "https://portgen-io.vercel.app/portapi/v1/settings/changemail";
           const token = Cookies.get('token')
           const options = {
             method: 'POST',

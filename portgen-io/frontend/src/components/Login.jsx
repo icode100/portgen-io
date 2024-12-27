@@ -37,7 +37,7 @@ export default function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/portapi/v1/reglog/login", loginState, {withCredentials: true});
+      const response = await axios.post("https://portgen-io.vercel.app/portapi/v1/reglog/login", loginState, {withCredentials: true});
       console.log("login successful:", response.data);
       setOpenAlert(true);
       setAlertSeverity("success"); // Set success severity

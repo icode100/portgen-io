@@ -208,7 +208,7 @@ export default function InfoComponent(){
                 }
             }
           }
-          const response = await axios.post("http://localhost:5000/portapi/v1/info/submitinfo", data, config, {withCredentials: true});
+          const response = await axios.post("https://portgen-io.vercel.app/portapi/v1/info/submitinfo", data, config, {withCredentials: true});
 
           console.log("data sent successful:", response.data);
         //   setOpenAlert(true);

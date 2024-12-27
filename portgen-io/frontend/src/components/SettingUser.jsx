@@ -33,7 +33,7 @@ export default function SettingUser(){
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
           };
-          const response = await axios.post("http://localhost:5000/portapi/v1/settings/changeUserName", settingUser, {withCredentials: true, headers: headers});
+          const response = await axios.post("https://portgen-io.vercel.app/portapi/v1/settings/changeUserName", settingUser, {withCredentials: true, headers: headers});
 
           console.log("email update successful:", response.data);
           setOpenAlert(true);

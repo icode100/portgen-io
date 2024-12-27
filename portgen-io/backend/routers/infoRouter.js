@@ -4,7 +4,7 @@ const router = express.Router()
 const {makeInfo, getInfo} = require('../controllers/infoController')
 
 router.route('/submitinfo').post(makeInfo)
-router.route('/getinfo').post(getInfo)
+router.route('/getinfo').get(getInfo)
 
 
 
