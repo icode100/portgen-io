@@ -7,8 +7,9 @@ import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const settings = ['settings', 'main','info','home', 'logout'];
+const settings = ['settings', 'main', 'info', 'home', 'logout'];
 
 export default function NavIcon(props) {
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -20,50 +21,54 @@ export default function NavIcon(props) {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  NavIcon.propTypes = {
+    img: PropTypes.string
+  };
 
-  const handleNavigation = (event)=>{
-    const {setting} = event.currentTarget.dataset;
+  const handleNavigation = (event) => {
+    const { setting } = event.currentTarget.dataset;
     // console.log(setting)
-    if(setting==='home'){
-        navigate('/')
+    if (setting === 'home') {
+      navigate('/')
+
     }
-    else{
-        navigate(`/${setting}`)
+    else {
+      navigate(`/${setting}`)
     }
   }
   return (
-    
-      
-        <Toolbar disableGutters>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src={props.img} />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} data-setting={setting} onClick={handleNavigation}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-        </Toolbar>
-      
+
+
+    <Toolbar disableGutters>
+      <Tooltip title="Open settings">
+        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+          <Avatar alt="Remy Sharp" src={props.img} />
+        </IconButton>
+      </Tooltip>
+      <Menu
+        sx={{ mt: '45px' }}
+        id="menu-appbar"
+        anchorEl={anchorElUser}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        keepMounted
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        open={Boolean(anchorElUser)}
+        onClose={handleCloseUserMenu}
+      >
+        {settings.map((setting) => (
+          <MenuItem key={setting} data-setting={setting} onClick={handleNavigation}>
+            <Typography textAlign="center">{setting}</Typography>
+          </MenuItem>
+        ))}
+      </Menu>
+    </Toolbar>
+
 
   );
 }

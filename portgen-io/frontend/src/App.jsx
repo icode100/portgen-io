@@ -1,4 +1,3 @@
-import React from 'react';
 import SettingPage from './components/SettingPage.jsx';
 import HomePage from './components/HomePage.jsx';
 import MainPage from './components/MainPage.jsx';
@@ -9,14 +8,12 @@ import RegisterLogin from './components/RegisterLogin.jsx'
 import Login from './components/Login.jsx'
 import Register from './components/Register.jsx'
 import InfoPage from './components/InfoPage.jsx'
-import axios from 'axios'
 import Webd1 from './components/portfolios/Protfolio1.jsx';
 import Webd2 from './components/portfolios/Protfolio2.jsx';
 import Webd3 from './components/portfolios/Portfolio3.jsx';
 
 import {
   BrowserRouter,
-  Navigate,
   Route,
   Routes
   

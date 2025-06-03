@@ -1,127 +1,138 @@
-import React from "react";
 import { useState } from "react";
 import register from "../assets/register_1.png";
-import "../style.css";
-import EmailIcon from "@mui/icons-material/Email";
-import PasswordIcon from "@mui/icons-material/Password";
-import PersonIcon from "@mui/icons-material/Person";
-import { redirect, Link, useNavigate } from "react-router-dom";
-import { Alert, Snackbar } from "@mui/material";
-import axios from 'axios';
-
-
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Register() {
-  const [registerState, setregisterState] = React.useState({
+  const [registerState, setRegisterState] = useState({
     UserName: "",
     Email: "",
     RecoveryPin: "",
     Password: "",
     CnfPass: "",
   });
+  const [alert, setAlert] = useState({ open: false, type: "", message: "" });
   const navigate = useNavigate();
 
-  function HandleChange(event) {
-    setregisterState({
+  const handleChange = (event) => {
+    setRegisterState({
       ...registerState,
       [event.target.name]: event.target.value,
     });
-  }
+  };
+
   const handleNavigation = () => {
     navigate("/reglog/login");
-  };
-  const [openAlert, setOpenAlert] = useState(false); // State for managing Alert visibility
-  const [alertSeverity, setAlertSeverity] = useState(""); // State for Alert severity
-
-  const handleAlertClose = () => {
-    setOpenAlert(false);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(registerState)
-
-    try { 
-      const response = await axios.post("https://portgen-io.vercel.app/portapi/v1/reglog/register", registerState);
+    try {
+      const response = await axios.post(
+        "https://portgen-io.vercel.app/portapi/v1/reglog/register",
+        registerState
+      );
       console.log("Registration successful:", response.data);
-      localStorage.setItem("portGentoken", response.data.token);
-      setOpenAlert(true);
-      setAlertSeverity("success"); // Set success severity
+      setAlert({ open: true, type: "success", message: "Registration successful!" });
       setTimeout(() => navigate("/reglog/login"), 2000); // Redirect after 2 seconds
     } catch (error) {
       console.error("Registration failed:", error);
-      setOpenAlert(true);
-      setAlertSeverity("error"); // Set error severity
+      setAlert({ open: true, type: "error", message: "Registration failed!" });
     }
   };
 
   return (
-    <div className="register">
-      <div className="register-header-nav">
-        <button className="register-register-btn" disabled={true}>
+    <div className="flex flex-col items-center justify-center bg-transparent backdrop-blur-[100px] h-[600px] w-[400px] rounded-[30px] mx-auto mt-20">
+      {/* Header Navigation */}
+      <div className="flex justify-between w-[90%] mb-6">
+        <button
+          className="w-[100px] h-[40px] rounded-[30px] bg-blue-400 text-white"
+          disabled
+        >
           Register
         </button>
-        <button className="register-login-btn" onClick={handleNavigation}>
+        <button
+          className="w-[100px] h-[40px] rounded-[30px] bg-blue-200 text-white"
+          onClick={handleNavigation}
+        >
           Login
         </button>
       </div>
 
-      <img src={register} className="register-img" alt="register" />
+      {/* Register Image */}
+      <img
+        src={register}
+        alt="Register"
+        className="w-[160px] h-[100px] mb-6 object-contain"
+      />
 
-      <form className="register-form" onSubmit={handleSubmit}>
+      {/* Register Form */}
+      <form
+        className="flex flex-col items-center w-full"
+        onSubmit={handleSubmit}
+      >
         <input
           type="text"
           name="UserName"
-          placeholder={`Enter Your Username 👤`}
-          className="register-form-username"
-          onChange={HandleChange}
+          placeholder="Enter Your Username 👤"
+          className="w-[300px] h-[30px] rounded-[30px] bg-blue-300/60 px-4 mb-4 placeholder-gray-700"
+          onChange={handleChange}
         />
         <input
           type="email"
           name="Email"
-          className="register-form-email"
-          placeholder={`Enter your Email 📩`}
-          onChange={HandleChange}
+          placeholder="Enter your Email 📩"
+          className="w-[300px] h-[30px] rounded-[30px] bg-blue-300/60 px-4 mb-4 placeholder-gray-700"
+          onChange={handleChange}
         />
         <input
           type="password"
           name="Password"
-          className="register-form-password"
-          placeholder={`Enter Your Password 🔑`}
-          onChange={HandleChange}
+          placeholder="Enter Your Password 🔑"
+          className="w-[300px] h-[30px] rounded-[30px] bg-blue-300/60 px-4 mb-4 placeholder-gray-700"
+          onChange={handleChange}
         />
         <input
           type="password"
           name="CnfPass"
-          className="register-form-password"
-          placeholder={`Reneter Your Password 🔑`}
-          onChange={HandleChange}
+          placeholder="Re-enter Your Password 🔑"
+          className="w-[300px] h-[30px] rounded-[30px] bg-blue-300/60 px-4 mb-4 placeholder-gray-700"
+          onChange={handleChange}
         />
         <input
           type="password"
           name="RecoveryPin"
-          className="register-form-password"
-          placeholder={`Setup a recovery pin 🛂`}
-          onChange={HandleChange}
+          placeholder="Setup a recovery pin 🛂"
+          className="w-[300px] h-[30px] rounded-[30px] bg-blue-300/60 px-4 mb-4 placeholder-gray-700"
+          onChange={handleChange}
         />
-        <button type="submit" className="register-form-submit" >
+        <button
+          type="submit"
+          className="w-[300px] h-[30px] rounded-[30px] bg-pink-300 text-white"
+        >
           Register
         </button>
       </form>
 
-      <div className="register-footer">
-        Already Have an account? <Link to="/reglog/login">Login</Link> here
+      {/* Footer */}
+      <div className="mt-6 text-center">
+        Already have an account?{" "}
+        <Link to="/reglog/login" className="text-blue-500 hover:underline">
+          Login
+        </Link>{" "}
+        here
       </div>
 
-      <Snackbar
-        open={openAlert}
-        autoHideDuration={6000} // Automatically close after 6 seconds
-        onClose={handleAlertClose}
-      >
-        <Alert severity={alertSeverity}>
-          {alertSeverity === "success" ? "Registration successful!" : "Registration failed!"}
-        </Alert>
-      </Snackbar>
+      {/* Alert */}
+      {alert.open && (
+        <div
+          className={`mt-6 px-4 py-2 rounded-lg text-white ${
+            alert.type === "success" ? "bg-green-500" : "bg-red-500"
+          }`}
+        >
+          {alert.message}
+        </div>
+      )}
     </div>
   );
 }

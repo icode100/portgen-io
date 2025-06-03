@@ -1,30 +1,44 @@
-import React from "react";
-import "../style.css";
 import logo from "../assets/PortGenLogo.png";
-import rec from "../assets/rectangle.png"
+import rec from "../assets/rectangle.png";
 import hi from "../assets/hi-hello.gif";
 import { Link } from "react-router-dom";
-import Cookies from 'js-cookie'
+import Cookies from "js-cookie";
 import NavIcon from "./NavIcon";
-import profile from '../assets/image_extra1.png'
+import profile from "../assets/image_extra1.png";
 
-export default function HomePage () {
-  console.log(Cookies.get("token")===undefined);
-  const isvalidated = Cookies.get('token')===undefined;
-  console.log(isvalidated)
+export default function HomePage() {
+  const isValidated = Cookies.get("token") === undefined;
+
   return (
-    <div className="home-page">
-        <div className="nav-bar">
-            <Link to='/'><img id="portgen" src={logo} alt="logo" /></Link>
-            {isvalidated ?  <Link to = '/reglog/register'><p id="register">Register/Login</p></Link>: <div style={{marginRight:"10px"}}><NavIcon img={profile}/></div>}            
+    <div className="bg-pink-100 h-screen w-screen">
+      {/* Navigation Bar */}
+      <div className="bg-gradient-to-r from-purple-300 via-pink-100 to-transparent backdrop-blur-md flex justify-between items-center h-14 px-6 shadow-md">
+        <Link to="/">
+          <img src={logo} alt="PortGen.IO" className="h-10" />
+        </Link>
+        {isValidated ? (
+          <Link to="/reglog/register">
+            <p className="text-black font-serif hover:text-pink-500 transition duration-300">
+              Register/Login
+            </p>
+          </Link>
+        ) : (
+          <div className="mr-2">
+            <NavIcon img={profile} />
+          </div>
+        )}
+      </div>
+
+      {/* Body Section */}
+      <div className="flex flex-col items-center justify-center h-[calc(100%-3.5rem)]">
+        <p className="text-center font-serif text-2xl px-4">
+          Create a stunning portfolio in minutes!
+        </p>
+        <div className="flex justify-around w-full mt-6">
+          <img src={hi} alt="Hi" className="h-1/3 w-1/3" />
+          <img src={rec} alt="Background" className="h-1/3 w-1/3" />
         </div>
-        <div className="body">
-            <p id="headline-body-homePage">Create a stunning portfolio in minutes !</p>
-            <div className="footer-HomePage">
-                <img id ="hi" src={hi} alt="" />
-                <img id ="rec" src={rec} alt="back" /> 
-            </div>
-        </div>
+      </div>
     </div>
   );
-};
+}

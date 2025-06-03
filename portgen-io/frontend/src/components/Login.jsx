@@ -1,97 +1,106 @@
-import React from "react";
 import { useState } from "react";
 import login from "../assets/login_1.png";
-import "../style.css";
-import EmailIcon from "@mui/icons-material/Email";
-import PasswordIcon from "@mui/icons-material/Password";
-import PersonIcon from "@mui/icons-material/Person";
 import { useNavigate } from "react-router-dom";
-import { Alert, Snackbar } from "@mui/material";
-import axios from 'axios'
-import Cookies from 'js-cookie'
-
+import axios from "axios";
 
 export default function Login() {
-  const [loginState, setLoginState] = React.useState({
+  const [loginState, setLoginState] = useState({
     Email: "",
     Password: "",
   });
+  const [alert, setAlert] = useState({ open: false, type: "", message: "" });
   const navigate = useNavigate();
-  function HandleChange(event) {
+
+  const handleChange = (event) => {
     setLoginState({
       ...loginState,
       [event.target.name]: event.target.value,
     });
-  }
-  const handleNavigation = () => {
-    navigate("/reglog/register");
   };
 
-  const [openAlert, setOpenAlert] = useState(false); // State for managing Alert visibility
-  const [alertSeverity, setAlertSeverity] = useState(""); // State for Alert severity
-
-  const handleAlertClose = () => {
-    setOpenAlert(false);
+  const handleNavigation = () => {
+    navigate("/reglog/register");
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("https://portgen-io.vercel.app/portapi/v1/reglog/login", loginState, {withCredentials: true});
-      console.log("login successful:", response.data);
-      setOpenAlert(true);
-      setAlertSeverity("success"); // Set success severity
+      const response = await axios.post(
+        "https://portgen-io.vercel.app/portapi/v1/reglog/login",
+        loginState,
+        { withCredentials: true }
+      );
+      console.log("Login successful:", response.data);
+      setAlert({ open: true, type: "success", message: "Login successful!" });
       setTimeout(() => navigate("/main"), 2000); // Redirect after 2 seconds
     } catch (error) {
-      console.error("login failed:", error);
-      setOpenAlert(true);
-      setAlertSeverity("error"); // Set error severity
+      console.error("Login failed:", error);
+      setAlert({ open: true, type: "error", message: "Login failed!" });
     }
   };
 
   return (
-    <div className="login">
-      <div className="login-header-nav">
-        <button className="login-register-btn" onClick={handleNavigation}>
+    <div className="flex flex-col items-center justify-center bg-transparent backdrop-blur-[100px] h-[500px] w-[400px] rounded-[30px] mx-auto mt-20">
+      {/* Header Navigation */}
+      <div className="flex justify-between w-[90%] mb-6">
+        <button
+          className="w-[100px] h-[40px] rounded-[30px] bg-blue-400 text-white"
+          onClick={handleNavigation}
+        >
           Register
         </button>
-        <button className="login-login-btn" disabled={true}>
+        <button
+          className="w-[100px] h-[40px] rounded-[30px] bg-blue-200 text-white"
+          disabled
+        >
           Login
         </button>
       </div>
 
-      <img src={login} className="login-img" alt="login" />
+      {/* Login Image */}
+      <img
+        src={login}
+        alt="Login"
+        className="w-[100px] h-[160px] mb-6 object-contain"
+      />
 
-      <form className="login-form" onSubmit={handleSubmit}>
+      {/* Login Form */}
+      <form
+        className="flex flex-col items-center w-full"
+        onSubmit={handleSubmit}
+      >
         <input
           type="email"
           name="Email"
-          className="login-form-email"
-          placeholder={"Enter your Email ✉"}
-          onChange={HandleChange}
+          placeholder="Enter your Email ✉"
+          className="w-[300px] h-[30px] rounded-[30px] bg-blue-300/60 px-4 mb-4 placeholder-gray-700"
+          onChange={handleChange}
         />
         <input
           type="password"
           name="Password"
-          className="login-form-password"
-          placeholder={"Enter Your Password 🔑"}
-          onChange={HandleChange}
+          placeholder="Enter Your Password 🔑"
+          className="w-[300px] h-[30px] rounded-[30px] bg-blue-300/60 px-4 mb-4 placeholder-gray-700"
+          onChange={handleChange}
         />
-        <button type="submit" className="login-form-submit">
+        <button
+          type="submit"
+          className="w-[300px] h-[30px] rounded-[30px] bg-pink-300 text-white"
+        >
           Login
         </button>
       </form>
-      <Snackbar
-        open={openAlert}
-        autoHideDuration={6000} // Automatically close after 6 seconds
-        onClose={handleAlertClose}
-      >
-        <Alert severity={alertSeverity}>
-          {alertSeverity === "success"
-            ? "login successful!"
-            : "login failed!"}
-        </Alert>
-      </Snackbar>
+
+      {/* Alert */}
+      {alert.open && (
+        <div
+          className={`mt-6 px-4 py-2 rounded-lg text-white ${
+            alert.type === "success" ? "bg-green-500" : "bg-red-500"
+          }`}
+        >
+          {alert.message}
+        </div>
+      )}
     </div>
   );
 }

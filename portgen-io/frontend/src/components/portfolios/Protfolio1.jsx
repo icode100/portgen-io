@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import Logo from "../../assets/image 8extra2.png";
 import Back from '../../assets/Rectangle 5inside.svg';
@@ -258,7 +260,7 @@ export default function Webd1(props) {
         <p className='desc' style={desc}>Hey, this is {props.name} in my journey of crafting the unseen power behind every click!!</p>
        <div className='total-info' style = {total_info}>
             <img src={Back} alt="" style = {total_info_img}/>
-            <p class="about" style = {about}>{desc}</p>
+            <p className="about" style = {about}>{desc}</p>
             <div className="info" style={info}>
                 <div className="in-info" style = {in_info}>
                     <div className="eduction" >

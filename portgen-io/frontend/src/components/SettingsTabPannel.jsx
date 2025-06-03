@@ -1,74 +1,75 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import SettingEmail from './SettingEmail';
-import SettingPass from './SettingPassword';
-import SettingUser from './SettingUser';
-import Stack from '@mui/material/Stack'
-function CustomTabPanel(props) {
-  const { children, value, index, ...other } = props;
+import { useState } from "react";
+import SettingEmail from "./SettingEmail";
+import SettingPass from "./SettingPassword";
+import SettingUser from "./SettingUser";
 
+import PropTypes from "prop-types";
+
+function TabPanel({ children, value, index }) {
   return (
     <div
       role="tabpanel"
       hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
+      className="p-4"
     >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+      {value === index && <div>{children}</div>}
     </div>
   );
 }
 
-CustomTabPanel.propTypes = {
+TabPanel.propTypes = {
   children: PropTypes.node,
-  index: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  };
-}
-
 export default function SettingsTabPannel() {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-    console.log(newValue)
+  const handleChange = (index) => {
+    setValue(index);
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Stack>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-            <Tab label="Change Email" {...a11yProps(0)} />
-            <Tab label="Change Username" {...a11yProps(1)} />
-            <Tab label="Change Password" {...a11yProps(2)} />
-          </Tabs>
-        </Box>
-        <CustomTabPanel value={value} index={0}>
-          <SettingEmail/>
-        </CustomTabPanel>
-        <CustomTabPanel value={value} index={1}>
-          <SettingUser/>
-        </CustomTabPanel>
-        <CustomTabPanel value={value} index={2}>
-          <SettingPass/>
-        </CustomTabPanel>
-      </Stack>
-    </Box>
+    <div className="w-full bg-white bg-opacity-80 backdrop-blur-lg rounded-lg shadow-lg">
+      {/* Tabs */}
+      <div className="flex border-b border-gray-300">
+        <button
+          className={`flex-1 py-2 text-center ${
+            value === 0 ? "border-b-2 border-blue-500 text-blue-500" : "text-gray-500"
+          }`}
+          onClick={() => handleChange(0)}
+        >
+          Change Email
+        </button>
+        <button
+          className={`flex-1 py-2 text-center ${
+            value === 1 ? "border-b-2 border-blue-500 text-blue-500" : "text-gray-500"
+          }`}
+          onClick={() => handleChange(1)}
+        >
+          Change Username
+        </button>
+        <button
+          className={`flex-1 py-2 text-center ${
+            value === 2 ? "border-b-2 border-blue-500 text-blue-500" : "text-gray-500"
+          }`}
+          onClick={() => handleChange(2)}
+        >
+          Change Password
+        </button>
+      </div>
+
+      {/* Tab Panels */}
+      <TabPanel value={value} index={0}>
+        <SettingEmail />
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+        <SettingUser />
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <SettingPass />
+      </TabPanel>
+    </div>
   );
 }

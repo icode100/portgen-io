@@ -1,49 +1,65 @@
-import React from 'react'
+import PropTypes from "prop-types";
 import Logo from "../assets/PortGenLogo.png";
 import BackGround from "../assets/Vector 17.svg";
 import PortfolioCat from "./MainPgPortCatSet.jsx";
-import {Link} from 'react-router-dom'
-import Prop1 from "../assets/Vector 23.svg";
-import Prop2 from "../assets/Vector 24.svg";
-import Prop3 from "../assets/Vector 25.svg";
-import Prop4 from "../assets/Vector 26.svg";
-import "../style.css";
-import profile from '../assets/image_extra1.png'
-import NavIcon from './NavIcon';
-
-
-
+import { Link } from "react-router-dom";
+import profile from "../assets/image_extra1.png";
+import NavIcon from "./NavIcon";
 
 export default function MainPage(props) {
   let data = props.data;
   let totalSets = [];
-  for(let i = 0; i < data.length; i++) {
-    totalSets.push(<PortfolioCat key={i} title={data[i].title} images={data[i].images} url={data[i].urls} components = {data[i].components}  />);
+  for (let i = 0; i < data.length; i++) {
+    totalSets.push(
+      <PortfolioCat
+        key={i}
+        title={data[i].title}
+        images={data[i].images}
+        url={data[i].urls}
+        components={data[i].components}
+      />
+    );
+  
+  MainPage.propTypes = {
+    data: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string,
+        images: PropTypes.array,
+        urls: PropTypes.array,
+        components: PropTypes.array,
+      })
+    ).isRequired,
+  };
   }
 
   return (
-    <div id="mainpage">
-
-      <div id ="mainpage-back">
-         <img  src={BackGround} alt=""/>
+    <div className="relative flex flex-col w-full h-full bg-white">
+      {/* Background */}
+      <div className="absolute top-0 right-0 z-[-1]">
+        <img src={BackGround} alt="Background" className="h-[40rem] w-[30rem]" />
       </div>
 
-      <div id = "mainPageNavBar"> 
-        <Link to = '/'><img src={Logo} alt="" /></Link>
-        <NavIcon img={profile}/>
+      {/* Navigation Bar */}
+      <div className="flex justify-between items-center p-4 bg-[#FFF8F8] shadow-md">
+        <Link to="/">
+          <img src={Logo} alt="PortGen.IO Logo" className="h-10" />
+        </Link>
+        <NavIcon img={profile} />
       </div>
 
-      <div className = "here-mainpage">
-        <div id="mainPageBody">
-          {totalSets}    
+      {/* Main Content */}
+      <div className="relative flex flex-col items-center bg-no-repeat bg-[url('../assets/Vector 23.svg'),url('../assets/Vector 24.svg'),url('../assets/Vector 25.svg'),url('../assets/Vector 26.svg')] bg-center bg-contain">
+        <div className="flex flex-wrap justify-center gap-8 p-8">
+          {totalSets}
         </div>
-
-        <div className="mainPagefotter">
-          <p>Copyright © 2024 PortgenIo.Inc. All rights reserved.</p>
-        </div>
       </div>
-    
+
+      {/* Footer */}
+      <footer className="mt-8 border-t-4 border-[#FFF9FF] bg-[#A4EAF9] py-4">
+        <p className="text-center text-black font-medium">
+          Copyright © 2024 PortgenIo.Inc. All rights reserved.
+        </p>
+      </footer>
     </div>
-  
-  )
+  );
 }
