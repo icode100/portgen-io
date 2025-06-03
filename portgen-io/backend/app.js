@@ -26,15 +26,15 @@ const rateLimiter = require('express-rate-limit');
 const helmet = require('helmet');
 const xss = require('xss-clean');
 const mongoSanitize = require('express-mongo-sanitize');
-const cors = require('cors')
-// Example using Express (replace with your framework's syntax):
-app.use(cors(
-  {
-    origin:["https://portgen-io-main.vercel.app/"],
-    methods:["POST","GET", "PUT", "DELETE", "OPTIONS"],
-    credentials: true,
-  }
-))
+const cors = require("cors");
+
+app.use(
+    cors({
+        origin: ["https://portgen-io-main.vercel.app"],
+        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        credentials: true,
+    })
+);
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'https://portgen-io-main.vercel.app/'); // Replace with your frontend's origin
@@ -87,3 +87,5 @@ const start = async (req, res) => {
 };
 
 start();
+
+module.exports = app;
